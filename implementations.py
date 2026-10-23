@@ -1,6 +1,12 @@
 import numpy as np
 
 ### HELPERS ###
+def sigmoid(t):
+    """
+    Apply sigmoid function on t.
+    """
+    return 1 / (1 + np.exp(-t))
+
 def compute_loss(y, tx, w):
     """
     Compute the MSE.
@@ -13,6 +19,9 @@ def compute_loss(y, tx, w):
     Returns:
         loss: float. The value of the loss corresponding to the input weight vector w.
     """
+    assert y.shape[0] == tx.shape[0]
+    assert tx.shape[1] == w.shape[0]
+
     N = len(y)
     e = np.array(y) - tx @ w
     loss = 1/(2*N) * np.sum(np.pow(e, 2))
@@ -31,17 +40,14 @@ def compute_gradient(y, tx, w):
     Returns:
         gradient: numpy array of shape (2, ).
     """
+    assert y.shape[0] == tx.shape[0]
+    assert tx.shape[1] == w.shape[0]
+
     N = len(y)
     e = np.array(y) - tx @ w
     gradient = -(1/N) * tx.transpose() @ e
 
     return gradient
-
-def sigmoid(t):
-    """
-    Apply sigmoid function on t.
-    """
-    return 1 / (1 + np.exp(-t))
 
 def compute_logistic_loss(y, tx, w):
     """
@@ -55,6 +61,9 @@ def compute_logistic_loss(y, tx, w):
     Returns:
         loss: float. The value of the loss corresponding to the input weight vector w.
     """
+    assert y.shape[0] == tx.shape[0]
+    assert tx.shape[1] == w.shape[0]
+
     N = tx.shape[0]
     s = sigmoid(tx @ w)
     loss = -(1/N) *  np.squeeze(np.sum(y * np.log(s) + (1 - y) * np.log(1 - s))).item()
@@ -73,6 +82,9 @@ def compute_logistic_gradient(y, tx, w):
     Returns:
         gradient: numpy array of shape (2, ).
     """
+    assert y.shape[0] == tx.shape[0]
+    assert tx.shape[1] == w.shape[0]
+
     N = tx.shape[0]
     s = np.array(y) - sigmoid(tx @ w)
     gradient = -(1/N) * tx.transpose() @ s
@@ -80,7 +92,7 @@ def compute_logistic_gradient(y, tx, w):
     return gradient
 
 
-### FUNCTIONS ###
+### FUNCTIONS TO IMPLEMENT ###
 def mean_squared_error_gd(y, tx, initial_w, max_iters, gamma):
     """
     Linear regression using gradient descent.
