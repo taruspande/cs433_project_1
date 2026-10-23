@@ -222,3 +222,7 @@ __marimo__/
 # DS_Store
 .DS_Storedataset/
 dataset/
+.DS_Store
+.idea/
+.venv/
+__pycache__/
