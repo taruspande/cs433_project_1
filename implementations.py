@@ -24,7 +24,7 @@ def compute_loss(y, tx, w):
 
     N = len(y)
     e = np.array(y) - tx @ w
-    loss = 1/(2*N) * np.sum(np.pow(e, 2))
+    loss = 1/(2*N) * np.sum(np.power(e, 2))
 
     return loss
 
@@ -66,7 +66,7 @@ def compute_logistic_loss(y, tx, w):
 
     N = tx.shape[0]
     s = sigmoid(tx @ w)
-    loss = -(1/N) *  np.squeeze(np.sum(y * np.log(s) + (1 - y) * np.log(1 - s))).item()
+    loss = -(1/N) *  np.squeeze(np.sum(y * np.log(s) + (1 - y) * np.log(1 - s)))
 
     return loss
 
