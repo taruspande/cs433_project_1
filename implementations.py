@@ -7,6 +7,7 @@ def sigmoid(t):
     """
     return 1 / (1 + np.exp(-t))
 
+
 def compute_loss(y, tx, w):
     """
     Compute the MSE.
@@ -24,9 +25,10 @@ def compute_loss(y, tx, w):
 
     N = len(y)
     e = np.array(y) - tx @ w
-    loss = 1/(2*N) * np.sum(np.power(e, 2))
+    loss = 1 / (2 * N) * np.sum(np.power(e, 2))
 
     return loss
+
 
 def compute_gradient(y, tx, w):
     """
@@ -45,9 +47,10 @@ def compute_gradient(y, tx, w):
 
     N = len(y)
     e = np.array(y) - tx @ w
-    gradient = -(1/N) * tx.transpose() @ e
+    gradient = -(1 / N) * tx.transpose() @ e
 
     return gradient
+
 
 def compute_logistic_loss(y, tx, w):
     """
@@ -66,9 +69,10 @@ def compute_logistic_loss(y, tx, w):
 
     N = tx.shape[0]
     s = sigmoid(tx @ w)
-    loss = -(1/N) *  np.squeeze(np.sum(y * np.log(s) + (1 - y) * np.log(1 - s)))
+    loss = -(1 / N) * np.squeeze(np.sum(y * np.log(s) + (1 - y) * np.log(1 - s)))
 
     return loss
+
 
 def compute_logistic_gradient(y, tx, w):
     """
@@ -87,7 +91,7 @@ def compute_logistic_gradient(y, tx, w):
 
     N = tx.shape[0]
     s = np.array(y) - sigmoid(tx @ w)
-    gradient = -(1/N) * tx.transpose() @ s
+    gradient = -(1 / N) * tx.transpose() @ s
 
     return gradient
 
@@ -122,6 +126,7 @@ def mean_squared_error_gd(y, tx, initial_w, max_iters, gamma):
 
     return w, loss
 
+
 def mean_squared_error_sgd(y, tx, initial_w, max_iters, gamma):
     """
     Linear regression using stochastic gradient descent.
@@ -144,7 +149,7 @@ def mean_squared_error_sgd(y, tx, initial_w, max_iters, gamma):
     for n_iter in range(max_iters):
         # Standard mini-batch size is one.
         idx = np.random.randint(len(y))
-        minibatch_y, minibatch_tx = y[idx:idx+1], tx[idx:idx+1]
+        minibatch_y, minibatch_tx = y[idx : idx + 1], tx[idx : idx + 1]
         # Compute the gradient
         gradient = compute_gradient(minibatch_y, minibatch_tx, w)
         # Update the weights
@@ -154,6 +159,7 @@ def mean_squared_error_sgd(y, tx, initial_w, max_iters, gamma):
     loss = compute_loss(y, tx, w)
 
     return w, loss
+
 
 def least_squares(y, tx):
     """
@@ -177,6 +183,7 @@ def least_squares(y, tx):
 
     return w, loss
 
+
 def ridge_regression(y, tx, lambda_):
     """implement ridge regression.
 
@@ -193,7 +200,7 @@ def ridge_regression(y, tx, lambda_):
     D = tx.shape[1]
 
     # Solve the linear system
-    A = (tx.transpose() @ tx) + (lambda_*2*N) * np.identity(D)
+    A = (tx.transpose() @ tx) + (lambda_ * 2 * N) * np.identity(D)
     b = tx.transpose() @ y
     w = np.linalg.solve(A, b)
 
@@ -201,6 +208,7 @@ def ridge_regression(y, tx, lambda_):
     loss = compute_loss(y, tx, w)
 
     return w, loss
+
 
 def logistic_regression(y, tx, initial_w, max_iters, gamma):
     """
@@ -226,11 +234,11 @@ def logistic_regression(y, tx, initial_w, max_iters, gamma):
         # Update the weights
         w = w - gamma * gradient
 
-
     # Compute the loss
     loss = compute_logistic_loss(y, tx, w)
 
     return w, loss
+
 
 def reg_logistic_regression(y, tx, lambda_, initial_w, max_iters, gamma):
     """
