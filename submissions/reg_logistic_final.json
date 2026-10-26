@@ -1,0 +1,23 @@
+{
+  "job": {
+    "stage": "s5_final",
+    "stage_no": 5,
+    "label": "final logistic",
+    "algo": "reg_logistic_regression",
+    "featureset": "final_std",
+    "gamma": 0.1,
+    "lam": 0.001,
+    "iters": [
+      100,
+      250,
+      500
+    ],
+    "seed": 0,
+    "refit": true,
+    "submit": "reg_logistic_final"
+  },
+  "threshold": 0.2228394640873185,
+  "predicted_positive_rate": 0.1261485294252096,
+  "cv_mean_f1": 0.43928769144888535,
+  "cv_mean_auc": 0.8656041502652292
+}

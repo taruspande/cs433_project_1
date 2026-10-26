@@ -1,0 +1,16 @@
+\begin{tabular}{lrrrr}
+\toprule
+feature set & features & F1 & AUC & $\Delta$F1 \\
+\midrule
+plain & 322 & 0.4120 $\pm$ 0.0025 & 0.8443 $\pm$ 0.0013 & +0.0000 \\
+interactions & 342 & 0.4146 $\pm$ 0.0022 & 0.8452 $\pm$ 0.0018 & +0.0026 \\
+one-hot & 762 & 0.4299 $\pm$ 0.0034 & 0.8584 $\pm$ 0.0020 & +0.0179 \\
+one-hot + recode & 762 & 0.4299 $\pm$ 0.0037 & 0.8583 $\pm$ 0.0020 & +0.0179 \\
+one-hot + inter. & 782 & 0.4347 $\pm$ 0.0034 & 0.8601 $\pm$ 0.0021 & +0.0226 \\
+one-hot + inter. + recode & 782 & 0.4344 $\pm$ 0.0034 & 0.8600 $\pm$ 0.0020 & +0.0224 \\
+one-hot + inter. + recode + bins & 889 & 0.4349 $\pm$ 0.0029 & 0.8601 $\pm$ 0.0020 & +0.0229 \\
+one-hot + dummy inter. & 858 & 0.4370 $\pm$ 0.0037 & 0.8602 $\pm$ 0.0020 & +0.0250 \\
+one-hot + recode + dummy inter. & 858 & 0.4370 $\pm$ 0.0035 & 0.8601 $\pm$ 0.0020 & +0.0249 \\
+final + bins & 965 & 0.4370 $\pm$ 0.0032 & 0.8601 $\pm$ 0.0020 & +0.0249 \\
+\bottomrule
+\end{tabular}

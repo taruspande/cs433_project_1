@@ -1,0 +1,5223 @@
+{
+  "settings": {
+    "recode": true,
+    "bin": false,
+    "bins": 8,
+    "interactions": true,
+    "one_hot": true,
+    "max_levels": 10,
+    "min_level_frac": 0.005,
+    "dummy_interactions": true,
+    "drop_json": null,
+    "sub_sample": false,
+    "n_rows": 328135,
+    "n_features": 878,
+    "eigenvalue_rel_tol": 1e-12,
+    "redundancy_tol": 1e-06,
+    "min_support": 100
+  },
+  "constant_columns": [
+    "SEX==1*DIABETE3==2",
+    "_RFHYPE5==other*DIABETE3==missing",
+    "_RFCHOL==9*DIABETE3==missing",
+    "GENHLTH==missing*DIFFWALK==1",
+    "GENHLTH==missing*DIFFWALK==missing",
+    "GENHLTH==missing*DIFFWALK==other"
+  ],
+  "identical_groups": [
+    {
+      "keep": "SEQNO",
+      "drop": [
+        "_PSU"
+      ]
+    },
+    {
+      "keep": "CTELENUM==missing",
+      "drop": [
+        "PVTRESD1==missing",
+        "CTELNUM1==1",
+        "CELLFON2==1",
+        "NUMHHOL2==missing",
+        "CPDEMO1==missing"
+      ]
+    },
+    {
+      "keep": "PVTRESD1==other",
+      "drop": [
+        "COLGHOUS==other",
+        "LADULT==other"
+      ]
+    },
+    {
+      "keep": "MEDCOST==missing",
+      "drop": [
+        "CHECKUP1==missing"
+      ]
+    },
+    {
+      "keep": "BPHIGH4==1",
+      "drop": [
+        "_RFHYPE5==2"
+      ]
+    },
+    {
+      "keep": "BLOODCHO==2",
+      "drop": [
+        "_CHOLCHK==3"
+      ]
+    },
+    {
+      "keep": "CHOLCHK==4",
+      "drop": [
+        "_CHOLCHK==2"
+      ]
+    },
+    {
+      "keep": "CHOLCHK==missing",
+      "drop": [
+        "TOLDHI2==missing",
+        "_RFCHOL==missing"
+      ]
+    },
+    {
+      "keep": "TOLDHI2==1",
+      "drop": [
+        "_RFCHOL==2"
+      ]
+    },
+    {
+      "keep": "ASTHMA3==1",
+      "drop": [
+        "_LTASTH1==2"
+      ]
+    },
+    {
+      "keep": "ASTHMA3==other",
+      "drop": [
+        "_LTASTH1==other"
+      ]
+    },
+    {
+      "keep": "ASTHNOW==1",
+      "drop": [
+        "_CASTHM1==2",
+        "_ASTHMS1==1"
+      ]
+    },
+    {
+      "keep": "ASTHNOW==2",
+      "drop": [
+        "_ASTHMS1==2"
+      ]
+    },
+    {
+      "keep": "HAVARTH3==1",
+      "drop": [
+        "_DRDXAR1==1"
+      ]
+    },
+    {
+      "keep": "DIABETE3==missing",
+      "drop": [
+        "SEX==1*DIABETE3==missing"
+      ]
+    },
+    {
+      "keep": "EDUCA==4",
+      "drop": [
+        "_EDUCAG==2"
+      ]
+    },
+    {
+      "keep": "EDUCA==5",
+      "drop": [
+        "_EDUCAG==3"
+      ]
+    },
+    {
+      "keep": "INCOME2==5",
+      "drop": [
+        "_INCOMG==3"
+      ]
+    },
+    {
+      "keep": "INCOME2==6",
+      "drop": [
+        "_INCOMG==4"
+      ]
+    },
+    {
+      "keep": "SMOKDAY2==1",
+      "drop": [
+        "_SMOKER3==1"
+      ]
+    },
+    {
+      "keep": "SMOKDAY2==2",
+      "drop": [
+        "_SMOKER3==2"
+      ]
+    },
+    {
+      "keep": "SMOKDAY2==3",
+      "drop": [
+        "_SMOKER3==3"
+      ]
+    },
+    {
+      "keep": "EXERANY2==2",
+      "drop": [
+        "_TOTINDA==2"
+      ]
+    },
+    {
+      "keep": "LMTJOIN3==1",
+      "drop": [
+        "_LMTACT1==1"
+      ]
+    },
+    {
+      "keep": "LMTJOIN3==2",
+      "drop": [
+        "_LMTACT1==2"
+      ]
+    },
+    {
+      "keep": "ARTHDIS2==1",
+      "drop": [
+        "_LMTWRK1==1"
+      ]
+    },
+    {
+      "keep": "ARTHDIS2==2",
+      "drop": [
+        "_LMTWRK1==2"
+      ]
+    },
+    {
+      "keep": "ARTHSOCL==1",
+      "drop": [
+        "_LMTSCL1==1"
+      ]
+    },
+    {
+      "keep": "ARTHSOCL==2",
+      "drop": [
+        "_LMTSCL1==2"
+      ]
+    },
+    {
+      "keep": "ARTHSOCL==3",
+      "drop": [
+        "_LMTSCL1==3"
+      ]
+    },
+    {
+      "keep": "HIVTST6==1",
+      "drop": [
+        "_AIDTST3==1"
+      ]
+    },
+    {
+      "keep": "HIVTST6==missing",
+      "drop": [
+        "_AIDTST3==missing"
+      ]
+    },
+    {
+      "keep": "VIREDIF3==other",
+      "drop": [
+        "VIPRFVS2==other"
+      ]
+    },
+    {
+      "keep": "ASTHMED3==other",
+      "drop": [
+        "ASINHALR==other"
+      ]
+    },
+    {
+      "keep": "_CRACE1==1",
+      "drop": [
+        "_CPRACE==1"
+      ]
+    },
+    {
+      "keep": "_CRACE1==2",
+      "drop": [
+        "_CPRACE==2"
+      ]
+    },
+    {
+      "keep": "_CRACE1==7",
+      "drop": [
+        "_CPRACE==7"
+      ]
+    },
+    {
+      "keep": "_CRACE1==99",
+      "drop": [
+        "_CPRACE==99"
+      ]
+    },
+    {
+      "keep": "_CRACE1==other",
+      "drop": [
+        "_CPRACE==other"
+      ]
+    },
+    {
+      "keep": "_CASTHM1==9",
+      "drop": [
+        "_ASTHMS1==9"
+      ]
+    },
+    {
+      "keep": "_DRDXAR1==missing",
+      "drop": [
+        "_LMTACT1==missing",
+        "_LMTWRK1==missing",
+        "_LMTSCL1==missing"
+      ]
+    },
+    {
+      "keep": "_PRACE1==77",
+      "drop": [
+        "_MRACE1==77"
+      ]
+    },
+    {
+      "keep": "_PRACE1==99",
+      "drop": [
+        "_MRACE1==99"
+      ]
+    },
+    {
+      "keep": "_HISPANC==1",
+      "drop": [
+        "_RACE==8",
+        "_RACEGR3==5",
+        "_RACE_G1==3"
+      ]
+    },
+    {
+      "keep": "_RACE==2",
+      "drop": [
+        "_RACEGR3==2",
+        "_RACE_G1==2"
+      ]
+    },
+    {
+      "keep": "_RACE==7",
+      "drop": [
+        "_RACEGR3==4",
+        "_RACE_G1==5"
+      ]
+    },
+    {
+      "keep": "_RACE==9",
+      "drop": [
+        "_RACEG21==9",
+        "_RACEGR3==9",
+        "_RACE_G1==missing"
+      ]
+    },
+    {
+      "keep": "_RACEGR3==3",
+      "drop": [
+        "_RACE_G1==4"
+      ]
+    },
+    {
+      "keep": "_BMI5CAT==missing",
+      "drop": [
+        "_RFBMI5==9"
+      ]
+    },
+    {
+      "keep": "_SMOKER3==9",
+      "drop": [
+        "_RFSMOK3==9"
+      ]
+    },
+    {
+      "keep": "_FRTRESP==0",
+      "drop": [
+        "_FRTLT1==9",
+        "_FRUITEX==1"
+      ]
+    },
+    {
+      "keep": "_VEGRESP==0",
+      "drop": [
+        "_VEGLT1==9",
+        "_VEGETEX==1"
+      ]
+    },
+    {
+      "keep": "_FRT16==other",
+      "drop": [
+        "_FRUITEX==other"
+      ]
+    },
+    {
+      "keep": "_VEG23==other",
+      "drop": [
+        "_VEGETEX==other"
+      ]
+    },
+    {
+      "keep": "_TOTINDA==9",
+      "drop": [
+        "PAMISS1_==9"
+      ]
+    },
+    {
+      "keep": "_PACAT1==3",
+      "drop": [
+        "_PA150R2==2"
+      ]
+    },
+    {
+      "keep": "_PACAT1==4",
+      "drop": [
+        "_PA150R2==3",
+        "_PA300R2==3"
+      ]
+    },
+    {
+      "keep": "_PACAT1==9",
+      "drop": [
+        "_PA300R2==9",
+        "_PA30021==9"
+      ]
+    },
+    {
+      "keep": "_PAINDX1==9",
+      "drop": [
+        "_PA150R2==9"
+      ]
+    },
+    {
+      "keep": "_PA300R2==1",
+      "drop": [
+        "_PA30021==1"
+      ]
+    },
+    {
+      "keep": "_PAREC1==1",
+      "drop": [
+        "_PASTAE1==1"
+      ]
+    },
+    {
+      "keep": "_PAREC1==9",
+      "drop": [
+        "_PASTAE1==9"
+      ]
+    },
+    {
+      "keep": "_RFSEAT2==9",
+      "drop": [
+        "_RFSEAT3==9"
+      ]
+    },
+    {
+      "keep": "SEX==1*DIABETE3==2",
+      "drop": [
+        "_RFHYPE5==other*DIABETE3==missing",
+        "_RFCHOL==9*DIABETE3==missing",
+        "GENHLTH==missing*DIFFWALK==1",
+        "GENHLTH==missing*DIFFWALK==missing",
+        "GENHLTH==missing*DIFFWALK==other"
+      ]
+    }
+  ],
+  "null_space_hints": [
+    [
+      {
+        "column": "_PAINDX1==2",
+        "weight": 0.511
+      },
+      {
+        "column": "PA1VIGM_",
+        "weight": -0.511
+      },
+      {
+        "column": "PAVIG11_",
+        "weight": 0.375
+      },
+      {
+        "column": "PAVIG21_",
+        "weight": 0.3
+      },
+      {
+        "column": "_PACAT1==3",
+        "weight": -0.21
+      },
+      {
+        "column": "_PA150R2==2",
+        "weight": -0.21
+      }
+    ],
+    [
+      {
+        "column": "_AGE80*SEX==1",
+        "weight": 0.586
+      },
+      {
+        "column": "_AGE65YR==2",
+        "weight": -0.325
+      },
+      {
+        "column": "_AGE65YR==3",
+        "weight": -0.323
+      },
+      {
+        "column": "_AGE80*SEX",
+        "weight": 0.29
+      },
+      {
+        "column": "_AGE80",
+        "weight": -0.234
+      },
+      {
+        "column": "_FLSHOT6==9",
+        "weight": 0.206
+      }
+    ],
+    [
+      {
+        "column": "SEX==1*_SMOKER3==9",
+        "weight": 0.45
+      },
+      {
+        "column": "bias",
+        "weight": 0.449
+      },
+      {
+        "column": "_AGE80*_RFHYPE5==other",
+        "weight": -0.271
+      },
+      {
+        "column": "SEX==1*_SMOKER3==1",
+        "weight": -0.27
+      },
+      {
+        "column": "CELLFON3==2",
+        "weight": -0.262
+      },
+      {
+        "column": "CELLFON3==1",
+        "weight": -0.262
+      }
+    ],
+    [
+      {
+        "column": "_AGE80*_RFCHOL==9",
+        "weight": 0.489
+      },
+      {
+        "column": "_AGE80*_RFHYPE5==other",
+        "weight": 0.439
+      },
+      {
+        "column": "_DRDXAR1==1",
+        "weight": -0.198
+      },
+      {
+        "column": "SEX==1*_SMOKER3==9",
+        "weight": 0.196
+      },
+      {
+        "column": "_AGE80*_SMOKER3==9",
+        "weight": -0.194
+      },
+      {
+        "column": "_LMTACT1==9",
+        "weight": 0.193
+      }
+    ],
+    [
+      {
+        "column": "IMONTH",
+        "weight": -0.698
+      },
+      {
+        "column": "IDATE",
+        "weight": 0.697
+      },
+      {
+        "column": "_BMI5*_RFHYPE5==other",
+        "weight": 0.048
+      },
+      {
+        "column": "SMOKE100==missing",
+        "weight": 0.038
+      },
+      {
+        "column": "SMOKE100==1",
+        "weight": 0.038
+      },
+      {
+        "column": "SMOKE100==other",
+        "weight": 0.038
+      }
+    ],
+    [
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": -0.481
+      },
+      {
+        "column": "_AGE80*_RFCHOL==9",
+        "weight": 0.376
+      },
+      {
+        "column": "_AGE80*_RFHYPE5==other",
+        "weight": -0.372
+      },
+      {
+        "column": "_AGE80*_SMOKER3==9",
+        "weight": -0.202
+      },
+      {
+        "column": "PVTRESD1==missing",
+        "weight": -0.189
+      },
+      {
+        "column": "CELLFON2==1",
+        "weight": 0.177
+      }
+    ],
+    [
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": 0.418
+      },
+      {
+        "column": "_AGE80*_RFHYPE5==other",
+        "weight": -0.346
+      },
+      {
+        "column": "PVTRESD1==missing",
+        "weight": 0.343
+      },
+      {
+        "column": "_AGE80*_SMOKER3==9",
+        "weight": -0.311
+      },
+      {
+        "column": "CTELENUM==missing",
+        "weight": 0.27
+      },
+      {
+        "column": "CELLFON2==1",
+        "weight": -0.228
+      }
+    ],
+    [
+      {
+        "column": "_AGE80*_RFCHOL==9",
+        "weight": -0.391
+      },
+      {
+        "column": "_BMI5*_RFHYPE5==other",
+        "weight": 0.315
+      },
+      {
+        "column": "SEX==1*_SMOKER3==9",
+        "weight": 0.225
+      },
+      {
+        "column": "SMOKE100==1",
+        "weight": 0.192
+      },
+      {
+        "column": "SMOKE100==other",
+        "weight": 0.192
+      },
+      {
+        "column": "SMOKE100==missing",
+        "weight": 0.192
+      }
+    ],
+    [
+      {
+        "column": "_BMI5*_RFHYPE5==other",
+        "weight": 0.407
+      },
+      {
+        "column": "CELLFON2==1",
+        "weight": -0.238
+      },
+      {
+        "column": "BPMEDS==other",
+        "weight": 0.179
+      },
+      {
+        "column": "BPMEDS==1",
+        "weight": 0.179
+      },
+      {
+        "column": "BPMEDS==2",
+        "weight": 0.179
+      },
+      {
+        "column": "_DRDXAR1==1",
+        "weight": -0.177
+      }
+    ],
+    [
+      {
+        "column": "CELLFON2==1",
+        "weight": 0.707
+      },
+      {
+        "column": "CPDEMO1==missing",
+        "weight": -0.496
+      },
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": 0.124
+      },
+      {
+        "column": "SEX==1*_RFHYPE5==other",
+        "weight": -0.111
+      },
+      {
+        "column": "NUMHHOL2==missing",
+        "weight": -0.101
+      },
+      {
+        "column": "_RACEG21==2",
+        "weight": -0.099
+      }
+    ],
+    [
+      {
+        "column": "CELLFON2==1",
+        "weight": -0.316
+      },
+      {
+        "column": "CTELNUM1==1",
+        "weight": 0.24
+      },
+      {
+        "column": "_BMI5*_RFHYPE5==other",
+        "weight": -0.191
+      },
+      {
+        "column": "SEX==1*_RFHYPE5==other",
+        "weight": -0.19
+      },
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": -0.183
+      },
+      {
+        "column": "_PA300R2==1",
+        "weight": 0.163
+      }
+    ],
+    [
+      {
+        "column": "NUMHHOL2==missing",
+        "weight": -0.561
+      },
+      {
+        "column": "EDUCA==5",
+        "weight": -0.318
+      },
+      {
+        "column": "_EDUCAG==3",
+        "weight": 0.318
+      },
+      {
+        "column": "CTELNUM1==1",
+        "weight": 0.224
+      },
+      {
+        "column": "CPDEMO1==missing",
+        "weight": 0.218
+      },
+      {
+        "column": "_DRDXAR1==1",
+        "weight": -0.166
+      }
+    ],
+    [
+      {
+        "column": "NUMHHOL2==missing",
+        "weight": -0.405
+      },
+      {
+        "column": "_DRDXAR1==1",
+        "weight": 0.398
+      },
+      {
+        "column": "HAVARTH3==1",
+        "weight": -0.248
+      },
+      {
+        "column": "ARTHSOCL==3",
+        "weight": -0.218
+      },
+      {
+        "column": "BPHIGH4==1",
+        "weight": -0.166
+      },
+      {
+        "column": "PVTRESD1==missing",
+        "weight": -0.163
+      }
+    ],
+    [
+      {
+        "column": "CPDEMO1==missing",
+        "weight": 0.385
+      },
+      {
+        "column": "CTELNUM1==1",
+        "weight": -0.3
+      },
+      {
+        "column": "SEQNO",
+        "weight": 0.24
+      },
+      {
+        "column": "_PSU",
+        "weight": -0.24
+      },
+      {
+        "column": "_DUALUSE==9",
+        "weight": -0.192
+      },
+      {
+        "column": "CPDEMO1==2",
+        "weight": 0.192
+      }
+    ],
+    [
+      {
+        "column": "EXERANY2==2",
+        "weight": 0.341
+      },
+      {
+        "column": "_TOTINDA==2",
+        "weight": -0.341
+      },
+      {
+        "column": "_DRDXAR1==1",
+        "weight": -0.259
+      },
+      {
+        "column": "ARTHSOCL==3",
+        "weight": 0.217
+      },
+      {
+        "column": "LMTJOIN3==2",
+        "weight": -0.206
+      },
+      {
+        "column": "ARTHDIS2==2",
+        "weight": 0.201
+      }
+    ],
+    [
+      {
+        "column": "_PAREC1==1",
+        "weight": 0.244
+      },
+      {
+        "column": "_PASTAE1==1",
+        "weight": -0.244
+      },
+      {
+        "column": "_LMTWRK1==2",
+        "weight": 0.237
+      },
+      {
+        "column": "_LMTWRK1==9",
+        "weight": 0.233
+      },
+      {
+        "column": "_RFCHOL==2",
+        "weight": 0.196
+      },
+      {
+        "column": "TOLDHI2==1",
+        "weight": -0.193
+      }
+    ],
+    [
+      {
+        "column": "SMOKDAY2==3",
+        "weight": 0.297
+      },
+      {
+        "column": "_AIDTST3==1",
+        "weight": 0.257
+      },
+      {
+        "column": "HIVTST6==1",
+        "weight": -0.257
+      },
+      {
+        "column": "_SMOKER3==3",
+        "weight": -0.246
+      },
+      {
+        "column": "_VEGETEX==1",
+        "weight": 0.22
+      },
+      {
+        "column": "_PAREC1==1",
+        "weight": -0.218
+      }
+    ],
+    [
+      {
+        "column": "_TOTINDA==2",
+        "weight": 0.296
+      },
+      {
+        "column": "EXERANY2==2",
+        "weight": -0.296
+      },
+      {
+        "column": "_PASTAE1==1",
+        "weight": 0.257
+      },
+      {
+        "column": "_PAREC1==1",
+        "weight": -0.257
+      },
+      {
+        "column": "_RFCHOL==2",
+        "weight": 0.228
+      },
+      {
+        "column": "TOLDHI2==1",
+        "weight": -0.226
+      }
+    ],
+    [
+      {
+        "column": "SMOKDAY2==3",
+        "weight": -0.396
+      },
+      {
+        "column": "_SMOKER3==3",
+        "weight": 0.386
+      },
+      {
+        "column": "_AIDTST3==1",
+        "weight": -0.207
+      },
+      {
+        "column": "HIVTST6==1",
+        "weight": 0.207
+      },
+      {
+        "column": "ASTHNOW==1",
+        "weight": -0.207
+      },
+      {
+        "column": "_PASTAE1==1",
+        "weight": 0.195
+      }
+    ],
+    [
+      {
+        "column": "_PASTAE1==1",
+        "weight": 0.29
+      },
+      {
+        "column": "_PAREC1==1",
+        "weight": -0.29
+      },
+      {
+        "column": "_CHOLCHK==3",
+        "weight": -0.287
+      },
+      {
+        "column": "CHOLCHK==missing",
+        "weight": 0.265
+      },
+      {
+        "column": "BLOODCHO==2",
+        "weight": 0.225
+      },
+      {
+        "column": "ASTHNOW==1",
+        "weight": 0.217
+      }
+    ],
+    [
+      {
+        "column": "ASTHNOW==1",
+        "weight": 0.248
+      },
+      {
+        "column": "_RFHYPE5==2",
+        "weight": -0.197
+      },
+      {
+        "column": "_PA300R2==1",
+        "weight": 0.19
+      },
+      {
+        "column": "_PA30021==1",
+        "weight": -0.189
+      },
+      {
+        "column": "LMTJOIN3==2",
+        "weight": -0.18
+      },
+      {
+        "column": "_EDUCAG==2",
+        "weight": -0.171
+      }
+    ],
+    [
+      {
+        "column": "_PA300R2==9",
+        "weight": -0.256
+      },
+      {
+        "column": "ASTHNOW==1",
+        "weight": 0.252
+      },
+      {
+        "column": "_SMOKER3==3",
+        "weight": 0.201
+      },
+      {
+        "column": "EXERANY2==2",
+        "weight": -0.192
+      },
+      {
+        "column": "_TOTINDA==2",
+        "weight": 0.192
+      },
+      {
+        "column": "SMOKDAY2==3",
+        "weight": -0.187
+      }
+    ],
+    [
+      {
+        "column": "COLGHOUS==other",
+        "weight": 0.369
+      },
+      {
+        "column": "_HISPANC==1",
+        "weight": 0.252
+      },
+      {
+        "column": "HIVTST6==1",
+        "weight": 0.236
+      },
+      {
+        "column": "_AIDTST3==1",
+        "weight": -0.236
+      },
+      {
+        "column": "PVTRESD1==other",
+        "weight": -0.214
+      },
+      {
+        "column": "ASTHNOW==1",
+        "weight": -0.187
+      }
+    ],
+    [
+      {
+        "column": "_VEGETEX==1",
+        "weight": -0.428
+      },
+      {
+        "column": "_VEGLT1==9",
+        "weight": 0.244
+      },
+      {
+        "column": "_FRUITEX==1",
+        "weight": -0.221
+      },
+      {
+        "column": "_VEGRESP==0",
+        "weight": 0.22
+      },
+      {
+        "column": "_FRTRESP==0",
+        "weight": 0.187
+      },
+      {
+        "column": "_HISPANC==1",
+        "weight": 0.182
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==2",
+        "weight": 0.241
+      },
+      {
+        "column": "EXERANY2==2",
+        "weight": 0.227
+      },
+      {
+        "column": "_TOTINDA==2",
+        "weight": -0.227
+      },
+      {
+        "column": "_RACE_G1==3",
+        "weight": -0.223
+      },
+      {
+        "column": "BPHIGH4==1",
+        "weight": -0.209
+      },
+      {
+        "column": "_VEGETEX==1",
+        "weight": 0.204
+      }
+    ],
+    [
+      {
+        "column": "ASTHNOW==1",
+        "weight": -0.328
+      },
+      {
+        "column": "EDUCA==5",
+        "weight": 0.263
+      },
+      {
+        "column": "_EDUCAG==3",
+        "weight": -0.263
+      },
+      {
+        "column": "LMTJOIN3==2",
+        "weight": -0.221
+      },
+      {
+        "column": "NUMHHOL2==missing",
+        "weight": -0.201
+      },
+      {
+        "column": "_HISPANC==1",
+        "weight": -0.177
+      }
+    ],
+    [
+      {
+        "column": "_RFCHOL==2",
+        "weight": 0.236
+      },
+      {
+        "column": "TOLDHI2==1",
+        "weight": -0.233
+      },
+      {
+        "column": "_DUALUSE==2",
+        "weight": -0.209
+      },
+      {
+        "column": "_VEGETEX==1",
+        "weight": -0.185
+      },
+      {
+        "column": "_PAREC1==1",
+        "weight": -0.17
+      },
+      {
+        "column": "_PASTAE1==1",
+        "weight": 0.17
+      }
+    ],
+    [
+      {
+        "column": "_HISPANC==1",
+        "weight": -0.326
+      },
+      {
+        "column": "_CHOLCHK==3",
+        "weight": 0.319
+      },
+      {
+        "column": "BLOODCHO==2",
+        "weight": -0.303
+      },
+      {
+        "column": "_RACEGR3==5",
+        "weight": 0.272
+      },
+      {
+        "column": "ASTHNOW==1",
+        "weight": 0.247
+      },
+      {
+        "column": "_PA30021==9",
+        "weight": 0.208
+      }
+    ],
+    [
+      {
+        "column": "_HISPANC==1",
+        "weight": -0.367
+      },
+      {
+        "column": "TOLDHI2==1",
+        "weight": -0.241
+      },
+      {
+        "column": "_RFCHOL==2",
+        "weight": 0.241
+      },
+      {
+        "column": "_RFCHOL==missing",
+        "weight": 0.233
+      },
+      {
+        "column": "BLOODCHO==2",
+        "weight": 0.214
+      },
+      {
+        "column": "_FRUITEX==1",
+        "weight": -0.211
+      }
+    ],
+    [
+      {
+        "column": "_PA30021==1",
+        "weight": -0.228
+      },
+      {
+        "column": "_PA300R2==1",
+        "weight": 0.225
+      },
+      {
+        "column": "_HISPANC==1",
+        "weight": 0.194
+      },
+      {
+        "column": "_FRTLT1==9",
+        "weight": 0.176
+      },
+      {
+        "column": "ASTHNOW==1",
+        "weight": -0.172
+      },
+      {
+        "column": "_FRUITEX==1",
+        "weight": -0.171
+      }
+    ],
+    [
+      {
+        "column": "BLOODCHO==2",
+        "weight": 0.28
+      },
+      {
+        "column": "_CHOLCHK==3",
+        "weight": -0.261
+      },
+      {
+        "column": "COLGHOUS==other",
+        "weight": 0.24
+      },
+      {
+        "column": "_FRUITEX==1",
+        "weight": 0.169
+      },
+      {
+        "column": "_VEGETEX==1",
+        "weight": -0.169
+      },
+      {
+        "column": "LADULT==other",
+        "weight": -0.16
+      }
+    ],
+    [
+      {
+        "column": "_VEGLT1==9",
+        "weight": 0.401
+      },
+      {
+        "column": "_PA30021==9",
+        "weight": -0.225
+      },
+      {
+        "column": "_HISPANC==1",
+        "weight": -0.224
+      },
+      {
+        "column": "_VEGETEX==1",
+        "weight": -0.213
+      },
+      {
+        "column": "_LMTACT1==2",
+        "weight": -0.202
+      },
+      {
+        "column": "LMTJOIN3==2",
+        "weight": 0.197
+      }
+    ],
+    [
+      {
+        "column": "_SMOKER3==1",
+        "weight": -0.355
+      },
+      {
+        "column": "SMOKDAY2==1",
+        "weight": 0.227
+      },
+      {
+        "column": "TOLDHI2==1",
+        "weight": -0.21
+      },
+      {
+        "column": "_RFCHOL==2",
+        "weight": 0.208
+      },
+      {
+        "column": "_HISPANC==1",
+        "weight": 0.206
+      },
+      {
+        "column": "_LMTSCL1==1",
+        "weight": 0.201
+      }
+    ],
+    [
+      {
+        "column": "CHOLCHK==missing",
+        "weight": -0.27
+      },
+      {
+        "column": "_HISPANC==1",
+        "weight": 0.231
+      },
+      {
+        "column": "_RFCHOL==missing",
+        "weight": 0.228
+      },
+      {
+        "column": "COLGHOUS==other",
+        "weight": 0.221
+      },
+      {
+        "column": "_SMOKER3==1",
+        "weight": -0.203
+      },
+      {
+        "column": "_RACE_G1==3",
+        "weight": -0.198
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==2",
+        "weight": 0.23
+      },
+      {
+        "column": "_RACE_G1==3",
+        "weight": 0.226
+      },
+      {
+        "column": "_PACAT1==9",
+        "weight": -0.182
+      },
+      {
+        "column": "_SMOKER3==1",
+        "weight": 0.172
+      },
+      {
+        "column": "_VEGLT1==9",
+        "weight": -0.165
+      },
+      {
+        "column": "PAMISS1_==9",
+        "weight": 0.165
+      }
+    ],
+    [
+      {
+        "column": "_LMTSCL1==1",
+        "weight": -0.272
+      },
+      {
+        "column": "ARTHSOCL==1",
+        "weight": 0.247
+      },
+      {
+        "column": "_INCOMG==2",
+        "weight": 0.226
+      },
+      {
+        "column": "INCOME2==3",
+        "weight": -0.226
+      },
+      {
+        "column": "INCOME2==4",
+        "weight": -0.226
+      },
+      {
+        "column": "_FRUITEX==1",
+        "weight": -0.214
+      }
+    ],
+    [
+      {
+        "column": "_LMTWRK1==2",
+        "weight": -0.229
+      },
+      {
+        "column": "_FRUITEX==1",
+        "weight": 0.212
+      },
+      {
+        "column": "_VEGRESP==0",
+        "weight": 0.209
+      },
+      {
+        "column": "_LMTSCL1==1",
+        "weight": 0.197
+      },
+      {
+        "column": "_FRTLT1==9",
+        "weight": -0.188
+      },
+      {
+        "column": "_SMOKER3==1",
+        "weight": -0.182
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==2",
+        "weight": -0.249
+      },
+      {
+        "column": "_RFCHOL==missing",
+        "weight": -0.244
+      },
+      {
+        "column": "CHOLCHK==4",
+        "weight": 0.215
+      },
+      {
+        "column": "_CHOLCHK==2",
+        "weight": -0.215
+      },
+      {
+        "column": "_FRUITEX==1",
+        "weight": -0.202
+      },
+      {
+        "column": "_FRTLT1==9",
+        "weight": 0.194
+      }
+    ],
+    [
+      {
+        "column": "_RFCHOL==missing",
+        "weight": 0.219
+      },
+      {
+        "column": "LADULT==other",
+        "weight": 0.208
+      },
+      {
+        "column": "CHOLCHK==missing",
+        "weight": -0.207
+      },
+      {
+        "column": "_EDUCAG==3",
+        "weight": -0.165
+      },
+      {
+        "column": "EDUCA==5",
+        "weight": 0.165
+      },
+      {
+        "column": "EDUCA==4",
+        "weight": -0.163
+      }
+    ],
+    [
+      {
+        "column": "_LMTSCL1==1",
+        "weight": -0.261
+      },
+      {
+        "column": "ARTHSOCL==1",
+        "weight": 0.216
+      },
+      {
+        "column": "_RACE_G1==3",
+        "weight": 0.198
+      },
+      {
+        "column": "_INCOMG==2",
+        "weight": -0.176
+      },
+      {
+        "column": "INCOME2==3",
+        "weight": 0.176
+      },
+      {
+        "column": "INCOME2==4",
+        "weight": 0.176
+      }
+    ],
+    [
+      {
+        "column": "NUMPHON2==1",
+        "weight": 0.221
+      },
+      {
+        "column": "NUMHHOL2==1",
+        "weight": -0.221
+      },
+      {
+        "column": "NUMPHON2==2",
+        "weight": 0.221
+      },
+      {
+        "column": "NUMPHON2==other",
+        "weight": 0.221
+      },
+      {
+        "column": "_RFSEAT3==9",
+        "weight": -0.185
+      },
+      {
+        "column": "_RFSEAT2==9",
+        "weight": 0.185
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==3",
+        "weight": 0.237
+      },
+      {
+        "column": "_PA30021==1",
+        "weight": 0.229
+      },
+      {
+        "column": "_PA300R2==1",
+        "weight": -0.207
+      },
+      {
+        "column": "NUMPHON2==other",
+        "weight": -0.192
+      },
+      {
+        "column": "NUMPHON2==2",
+        "weight": -0.192
+      },
+      {
+        "column": "NUMHHOL2==1",
+        "weight": 0.192
+      }
+    ],
+    [
+      {
+        "column": "COLGHOUS==other",
+        "weight": -0.223
+      },
+      {
+        "column": "_VEGRESP==0",
+        "weight": -0.22
+      },
+      {
+        "column": "_TOTINDA==9",
+        "weight": 0.218
+      },
+      {
+        "column": "_FRTRESP==0",
+        "weight": 0.215
+      },
+      {
+        "column": "_MISFRTN==1",
+        "weight": -0.208
+      },
+      {
+        "column": "_MISFRTN==2",
+        "weight": -0.208
+      }
+    ],
+    [
+      {
+        "column": "_LMTSCL1==1",
+        "weight": -0.323
+      },
+      {
+        "column": "ARTHSOCL==1",
+        "weight": 0.309
+      },
+      {
+        "column": "_RACE_G1==3",
+        "weight": -0.215
+      },
+      {
+        "column": "_SMOKER3==1",
+        "weight": -0.183
+      },
+      {
+        "column": "_RACE==8",
+        "weight": 0.159
+      },
+      {
+        "column": "_RFHLTH==2",
+        "weight": -0.153
+      }
+    ],
+    [
+      {
+        "column": "_CHOLCHK==2",
+        "weight": -0.3
+      },
+      {
+        "column": "CHOLCHK==4",
+        "weight": 0.3
+      },
+      {
+        "column": "_SMOKER3==1",
+        "weight": 0.241
+      },
+      {
+        "column": "_FRTLT1==9",
+        "weight": -0.196
+      },
+      {
+        "column": "_RACEGR3==2",
+        "weight": -0.173
+      },
+      {
+        "column": "_PACAT1==9",
+        "weight": 0.165
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==2",
+        "weight": -0.271
+      },
+      {
+        "column": "_RACEGR3==2",
+        "weight": 0.243
+      },
+      {
+        "column": "CHECKUP1==missing",
+        "weight": -0.173
+      },
+      {
+        "column": "MEDCOST==missing",
+        "weight": 0.173
+      },
+      {
+        "column": "_MISFRTN==2",
+        "weight": -0.153
+      },
+      {
+        "column": "_MISFRTN==1",
+        "weight": -0.153
+      }
+    ],
+    [
+      {
+        "column": "_ASTHMS1==1",
+        "weight": 0.428
+      },
+      {
+        "column": "_ASTHMS1==2",
+        "weight": 0.354
+      },
+      {
+        "column": "_CASTHM1==2",
+        "weight": -0.188
+      },
+      {
+        "column": "CHOLCHK==4",
+        "weight": 0.167
+      },
+      {
+        "column": "_CHOLCHK==2",
+        "weight": -0.167
+      },
+      {
+        "column": "ASTHMA3==1",
+        "weight": -0.162
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==5",
+        "weight": 0.269
+      },
+      {
+        "column": "_RACE_G1==missing",
+        "weight": -0.252
+      },
+      {
+        "column": "_RACE==7",
+        "weight": -0.207
+      },
+      {
+        "column": "_FRTRESP==0",
+        "weight": -0.195
+      },
+      {
+        "column": "_ASTHMS1==1",
+        "weight": -0.184
+      },
+      {
+        "column": "_RACEG21==9",
+        "weight": 0.181
+      }
+    ],
+    [
+      {
+        "column": "_RACE==9",
+        "weight": 0.459
+      },
+      {
+        "column": "_RACEGR3==9",
+        "weight": -0.369
+      },
+      {
+        "column": "_RACE_G1==missing",
+        "weight": -0.322
+      },
+      {
+        "column": "_RACEG21==9",
+        "weight": 0.232
+      },
+      {
+        "column": "_ASTHMS1==1",
+        "weight": -0.14
+      },
+      {
+        "column": "MEDCOST==missing",
+        "weight": 0.127
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==5",
+        "weight": 0.503
+      },
+      {
+        "column": "_RACE==7",
+        "weight": -0.333
+      },
+      {
+        "column": "_RACE_G1==missing",
+        "weight": 0.231
+      },
+      {
+        "column": "_RACEG21==9",
+        "weight": -0.21
+      },
+      {
+        "column": "CHECKUP1==missing",
+        "weight": -0.208
+      },
+      {
+        "column": "MEDCOST==missing",
+        "weight": 0.208
+      }
+    ],
+    [
+      {
+        "column": "_RACEGR3==9",
+        "weight": -0.362
+      },
+      {
+        "column": "_RACE==9",
+        "weight": 0.307
+      },
+      {
+        "column": "_CHOLCHK==2",
+        "weight": -0.226
+      },
+      {
+        "column": "CHOLCHK==4",
+        "weight": 0.226
+      },
+      {
+        "column": "_INCOMG==2",
+        "weight": -0.183
+      },
+      {
+        "column": "INCOME2==3",
+        "weight": 0.183
+      }
+    ],
+    [
+      {
+        "column": "_ASTHMS1==2",
+        "weight": 0.281
+      },
+      {
+        "column": "_RACE_G1==missing",
+        "weight": 0.277
+      },
+      {
+        "column": "_RACEGR3==9",
+        "weight": -0.237
+      },
+      {
+        "column": "ASTHNOW==2",
+        "weight": -0.235
+      },
+      {
+        "column": "_RACEG21==9",
+        "weight": -0.235
+      },
+      {
+        "column": "_RACE_G1==5",
+        "weight": 0.203
+      }
+    ],
+    [
+      {
+        "column": "ASTHMA3==other",
+        "weight": -0.331
+      },
+      {
+        "column": "_RACE_G1==4",
+        "weight": -0.211
+      },
+      {
+        "column": "_LTASTH1==other",
+        "weight": 0.191
+      },
+      {
+        "column": "MEDCOST==missing",
+        "weight": 0.177
+      },
+      {
+        "column": "CHECKUP1==missing",
+        "weight": -0.177
+      },
+      {
+        "column": "ASTHNOW==2",
+        "weight": 0.172
+      }
+    ],
+    [
+      {
+        "column": "DIABETE3==missing",
+        "weight": -0.219
+      },
+      {
+        "column": "SEX==1*DIABETE3==missing",
+        "weight": 0.195
+      },
+      {
+        "column": "_RACE_G1==5",
+        "weight": 0.181
+      },
+      {
+        "column": "HIVTST6==9",
+        "weight": -0.172
+      },
+      {
+        "column": "_AIDTST3==9",
+        "weight": 0.172
+      },
+      {
+        "column": "HIVTST6==7",
+        "weight": -0.172
+      }
+    ],
+    [
+      {
+        "column": "_PRACE1==77",
+        "weight": 0.491
+      },
+      {
+        "column": "_MRACE1==77",
+        "weight": -0.491
+      },
+      {
+        "column": "HAVARTH3==other",
+        "weight": 0.182
+      },
+      {
+        "column": "HAVARTH3==7",
+        "weight": 0.182
+      },
+      {
+        "column": "HAVARTH3==missing",
+        "weight": 0.182
+      },
+      {
+        "column": "_RFSMOK3==9",
+        "weight": -0.163
+      }
+    ],
+    [
+      {
+        "column": "_PRACE1==77",
+        "weight": -0.268
+      },
+      {
+        "column": "_MRACE1==77",
+        "weight": 0.268
+      },
+      {
+        "column": "_RACE==2",
+        "weight": -0.233
+      },
+      {
+        "column": "_RFSMOK3==9",
+        "weight": -0.203
+      },
+      {
+        "column": "_CPRACE==other",
+        "weight": 0.199
+      },
+      {
+        "column": "_CRACE1==other",
+        "weight": -0.199
+      }
+    ],
+    [
+      {
+        "column": "ASTHMA3==other",
+        "weight": 0.419
+      },
+      {
+        "column": "_LTASTH1==other",
+        "weight": -0.27
+      },
+      {
+        "column": "_RFSEAT2==2",
+        "weight": 0.2
+      },
+      {
+        "column": "SEATBELT==4",
+        "weight": -0.165
+      },
+      {
+        "column": "SEATBELT==5",
+        "weight": -0.165
+      },
+      {
+        "column": "SEATBELT==3",
+        "weight": -0.165
+      }
+    ],
+    [
+      {
+        "column": "ASTHMA3==other",
+        "weight": -0.252
+      },
+      {
+        "column": "_MRACE1==77",
+        "weight": 0.247
+      },
+      {
+        "column": "_PRACE1==77",
+        "weight": -0.247
+      },
+      {
+        "column": "_CPRACE==other",
+        "weight": -0.193
+      },
+      {
+        "column": "_CRACE1==other",
+        "weight": 0.193
+      },
+      {
+        "column": "_RACE_G1==missing",
+        "weight": -0.18
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==5",
+        "weight": -0.207
+      },
+      {
+        "column": "ARTHSOCL==1",
+        "weight": -0.187
+      },
+      {
+        "column": "_RACE==7",
+        "weight": 0.176
+      },
+      {
+        "column": "_LTASTH1==other",
+        "weight": 0.163
+      },
+      {
+        "column": "_RFSEAT2==2",
+        "weight": 0.161
+      },
+      {
+        "column": "_PA150R2==9",
+        "weight": 0.154
+      }
+    ],
+    [
+      {
+        "column": "_LMTWRK1==missing",
+        "weight": -0.571
+      },
+      {
+        "column": "_DRDXAR1==missing",
+        "weight": 0.497
+      },
+      {
+        "column": "_LMTACT1==missing",
+        "weight": -0.227
+      },
+      {
+        "column": "_LMTSCL1==missing",
+        "weight": 0.224
+      },
+      {
+        "column": "_CRACE1==2",
+        "weight": 0.144
+      },
+      {
+        "column": "_CPRACE==2",
+        "weight": -0.144
+      }
+    ],
+    [
+      {
+        "column": "_ASTHMS1==1",
+        "weight": -0.256
+      },
+      {
+        "column": "ASTHMA3==other",
+        "weight": -0.204
+      },
+      {
+        "column": "_RFSMOK3==9",
+        "weight": 0.178
+      },
+      {
+        "column": "_CASTHM1==2",
+        "weight": 0.176
+      },
+      {
+        "column": "_SMOKER3==9",
+        "weight": -0.174
+      },
+      {
+        "column": "_RACE==other",
+        "weight": 0.163
+      }
+    ],
+    [
+      {
+        "column": "_SMOKER3==9",
+        "weight": -0.232
+      },
+      {
+        "column": "_RFSMOK3==9",
+        "weight": 0.223
+      },
+      {
+        "column": "_RACE_G1==5",
+        "weight": -0.214
+      },
+      {
+        "column": "VICTRCT4==other",
+        "weight": -0.18
+      },
+      {
+        "column": "VIGLUMA2==other",
+        "weight": 0.18
+      },
+      {
+        "column": "VIGLUMA2==2",
+        "weight": 0.18
+      }
+    ],
+    [
+      {
+        "column": "_LTASTH1==other",
+        "weight": 0.273
+      },
+      {
+        "column": "_SMOKER3==9",
+        "weight": 0.264
+      },
+      {
+        "column": "_RFSMOK3==9",
+        "weight": -0.259
+      },
+      {
+        "column": "_LMTACT1==missing",
+        "weight": 0.246
+      },
+      {
+        "column": "_CRACE1==other",
+        "weight": -0.195
+      },
+      {
+        "column": "_CPRACE==other",
+        "weight": 0.195
+      }
+    ],
+    [
+      {
+        "column": "_LMTSCL1==missing",
+        "weight": -0.42
+      },
+      {
+        "column": "_LMTWRK1==missing",
+        "weight": 0.306
+      },
+      {
+        "column": "_LMTACT1==missing",
+        "weight": -0.23
+      },
+      {
+        "column": "HAVARTH3==other",
+        "weight": 0.22
+      },
+      {
+        "column": "HAVARTH3==7",
+        "weight": 0.22
+      },
+      {
+        "column": "HAVARTH3==missing",
+        "weight": 0.22
+      }
+    ],
+    [
+      {
+        "column": "_CRACE1==7",
+        "weight": -0.269
+      },
+      {
+        "column": "_CPRACE==7",
+        "weight": 0.269
+      },
+      {
+        "column": "_RFSEAT2==2",
+        "weight": 0.193
+      },
+      {
+        "column": "VIREDIF3==other",
+        "weight": -0.172
+      },
+      {
+        "column": "VIPRFVS2==other",
+        "weight": 0.172
+      },
+      {
+        "column": "_RACE_G1==4",
+        "weight": -0.166
+      }
+    ],
+    [
+      {
+        "column": "_LMTWRK1==missing",
+        "weight": 0.366
+      },
+      {
+        "column": "ASTHMED3==other",
+        "weight": -0.185
+      },
+      {
+        "column": "ASINHALR==other",
+        "weight": 0.185
+      },
+      {
+        "column": "_CRACE1==7",
+        "weight": 0.149
+      },
+      {
+        "column": "_CPRACE==7",
+        "weight": -0.149
+      },
+      {
+        "column": "_LMTACT1==missing",
+        "weight": -0.147
+      }
+    ],
+    [
+      {
+        "column": "RDUCHART==1",
+        "weight": 0.281
+      },
+      {
+        "column": "RDUCHART==other",
+        "weight": 0.281
+      },
+      {
+        "column": "CVDASPRN==1",
+        "weight": -0.281
+      },
+      {
+        "column": "_CRACE1==other",
+        "weight": 0.249
+      },
+      {
+        "column": "_CPRACE==other",
+        "weight": -0.249
+      },
+      {
+        "column": "PAMISS1_==9",
+        "weight": -0.21
+      }
+    ],
+    [
+      {
+        "column": "_CPRACE==7",
+        "weight": 0.306
+      },
+      {
+        "column": "_CRACE1==7",
+        "weight": -0.306
+      },
+      {
+        "column": "_RFHYPE5==other",
+        "weight": 0.225
+      },
+      {
+        "column": "BPHIGH4==other",
+        "weight": -0.221
+      },
+      {
+        "column": "BPHIGH4==missing",
+        "weight": -0.221
+      },
+      {
+        "column": "_CPRACE==2",
+        "weight": 0.172
+      }
+    ],
+    [
+      {
+        "column": "_CPRACE==99",
+        "weight": -0.237
+      },
+      {
+        "column": "_CRACE1==99",
+        "weight": 0.237
+      },
+      {
+        "column": "RDUCHART==1",
+        "weight": -0.236
+      },
+      {
+        "column": "RDUCHART==other",
+        "weight": -0.236
+      },
+      {
+        "column": "CVDASPRN==1",
+        "weight": 0.236
+      },
+      {
+        "column": "ASTHMED3==other",
+        "weight": -0.215
+      }
+    ],
+    [
+      {
+        "column": "_CPRACE==99",
+        "weight": -0.416
+      },
+      {
+        "column": "_CRACE1==99",
+        "weight": 0.416
+      },
+      {
+        "column": "_CPRACE==2",
+        "weight": 0.218
+      },
+      {
+        "column": "_CRACE1==2",
+        "weight": -0.218
+      },
+      {
+        "column": "_ASTHMS1==2",
+        "weight": 0.213
+      },
+      {
+        "column": "ASTHNOW==2",
+        "weight": -0.2
+      }
+    ],
+    [
+      {
+        "column": "ASINHALR==other",
+        "weight": -0.379
+      },
+      {
+        "column": "ASTHMED3==other",
+        "weight": 0.379
+      },
+      {
+        "column": "_DRDXAR1==missing",
+        "weight": 0.179
+      },
+      {
+        "column": "_LTASTH1==other",
+        "weight": 0.178
+      },
+      {
+        "column": "VIREDIF3==other",
+        "weight": 0.163
+      },
+      {
+        "column": "VIPRFVS2==other",
+        "weight": -0.163
+      }
+    ],
+    [
+      {
+        "column": "_CPRACE==2",
+        "weight": 0.366
+      },
+      {
+        "column": "_CRACE1==2",
+        "weight": -0.366
+      },
+      {
+        "column": "_CRACE1==99",
+        "weight": -0.327
+      },
+      {
+        "column": "_CPRACE==99",
+        "weight": 0.327
+      },
+      {
+        "column": "DIABETE3==missing",
+        "weight": 0.188
+      },
+      {
+        "column": "SEX==1*DIABETE3==missing",
+        "weight": -0.176
+      }
+    ],
+    [
+      {
+        "column": "_CPRACE==99",
+        "weight": -0.272
+      },
+      {
+        "column": "_CRACE1==99",
+        "weight": 0.272
+      },
+      {
+        "column": "_FRT16==other",
+        "weight": -0.236
+      },
+      {
+        "column": "_FRUITEX==other",
+        "weight": 0.236
+      },
+      {
+        "column": "_CRACE1==7",
+        "weight": 0.214
+      },
+      {
+        "column": "_CPRACE==7",
+        "weight": -0.214
+      }
+    ],
+    [
+      {
+        "column": "_CASTHM1==9",
+        "weight": 0.263
+      },
+      {
+        "column": "_DRDXAR1==missing",
+        "weight": -0.235
+      },
+      {
+        "column": "_LMTACT1==missing",
+        "weight": 0.228
+      },
+      {
+        "column": "DIABETE3==missing",
+        "weight": 0.206
+      },
+      {
+        "column": "_CRACE1==other",
+        "weight": 0.205
+      },
+      {
+        "column": "_CPRACE==other",
+        "weight": -0.205
+      }
+    ],
+    [
+      {
+        "column": "_VEG23==other",
+        "weight": 0.621
+      },
+      {
+        "column": "_VEGETEX==other",
+        "weight": -0.621
+      },
+      {
+        "column": "_FRT16==other",
+        "weight": -0.135
+      },
+      {
+        "column": "_FRUITEX==other",
+        "weight": 0.135
+      },
+      {
+        "column": "_CRACE1==other",
+        "weight": 0.133
+      },
+      {
+        "column": "_CPRACE==other",
+        "weight": -0.133
+      }
+    ],
+    [
+      {
+        "column": "_FRUITEX==other",
+        "weight": 0.41
+      },
+      {
+        "column": "_FRT16==other",
+        "weight": -0.41
+      },
+      {
+        "column": "ASTHMED3==other",
+        "weight": -0.275
+      },
+      {
+        "column": "ASINHALR==other",
+        "weight": 0.275
+      },
+      {
+        "column": "PSATEST1==2",
+        "weight": -0.247
+      },
+      {
+        "column": "PSATEST1==other",
+        "weight": -0.247
+      }
+    ],
+    [
+      {
+        "column": "_RFCHOL==missing*DIABETE3==missing",
+        "weight": -0.704
+      },
+      {
+        "column": "_FRT16==other",
+        "weight": -0.283
+      },
+      {
+        "column": "_FRUITEX==other",
+        "weight": 0.283
+      },
+      {
+        "column": "SEX==1*DIABETE3==missing",
+        "weight": 0.212
+      },
+      {
+        "column": "_VEGETEX==other",
+        "weight": 0.192
+      },
+      {
+        "column": "_VEG23==other",
+        "weight": -0.192
+      }
+    ],
+    [
+      {
+        "column": "_RFHYPE5==other*DIABETE3==missing",
+        "weight": -0.797
+      },
+      {
+        "column": "SEX==1*DIABETE3==2",
+        "weight": -0.594
+      },
+      {
+        "column": "_RFCHOL==9*DIABETE3==missing",
+        "weight": 0.113
+      },
+      {
+        "column": "_RFCHOL==missing*DIABETE3==missing",
+        "weight": -0.0
+      },
+      {
+        "column": "SEX==1*DIABETE3==missing",
+        "weight": 0.0
+      },
+      {
+        "column": "_AGE80*DIABETE3==missing",
+        "weight": -0.0
+      }
+    ],
+    [
+      {
+        "column": "SEX==1*DIABETE3==2",
+        "weight": 0.804
+      },
+      {
+        "column": "_RFHYPE5==other*DIABETE3==missing",
+        "weight": -0.593
+      },
+      {
+        "column": "_RFCHOL==9*DIABETE3==missing",
+        "weight": 0.044
+      },
+      {
+        "column": "_RFCHOL==missing*DIABETE3==missing",
+        "weight": 0.0
+      },
+      {
+        "column": "_FRT16==other",
+        "weight": 0.0
+      },
+      {
+        "column": "_FRUITEX==other",
+        "weight": -0.0
+      }
+    ],
+    [
+      {
+        "column": "GENHLTH==missing*DIFFWALK==other",
+        "weight": 0.982
+      },
+      {
+        "column": "GENHLTH==missing*DIFFWALK==1",
+        "weight": -0.165
+      },
+      {
+        "column": "GENHLTH==missing*DIFFWALK==missing",
+        "weight": 0.093
+      },
+      {
+        "column": "_RFCHOL==9*DIABETE3==missing",
+        "weight": -0.0
+      },
+      {
+        "column": "_CPRACE==2",
+        "weight": -0.0
+      },
+      {
+        "column": "_CRACE1==2",
+        "weight": 0.0
+      }
+    ],
+    [
+      {
+        "column": "GENHLTH==missing*DIFFWALK==missing",
+        "weight": -0.828
+      },
+      {
+        "column": "GENHLTH==missing*DIFFWALK==1",
+        "weight": -0.56
+      },
+      {
+        "column": "GENHLTH==missing*DIFFWALK==other",
+        "weight": -0.016
+      },
+      {
+        "column": "_RFCHOL==9*DIABETE3==missing",
+        "weight": 0.0
+      },
+      {
+        "column": "_RFCHOL==missing*DIABETE3==missing",
+        "weight": 0.0
+      },
+      {
+        "column": "SEX==1*DIABETE3==2",
+        "weight": -0.0
+      }
+    ],
+    [
+      {
+        "column": "GENHLTH==missing*DIFFWALK==1",
+        "weight": -0.812
+      },
+      {
+        "column": "GENHLTH==missing*DIFFWALK==missing",
+        "weight": 0.553
+      },
+      {
+        "column": "GENHLTH==missing*DIFFWALK==other",
+        "weight": -0.189
+      },
+      {
+        "column": "_RFHYPE5==other*DIABETE3==missing",
+        "weight": 0.0
+      },
+      {
+        "column": "_CPRACE==2",
+        "weight": 0.0
+      },
+      {
+        "column": "_CRACE1==2",
+        "weight": -0.0
+      }
+    ],
+    [
+      {
+        "column": "_RFCHOL==9*DIABETE3==missing",
+        "weight": -0.993
+      },
+      {
+        "column": "_RFHYPE5==other*DIABETE3==missing",
+        "weight": -0.116
+      },
+      {
+        "column": "SEX==1*DIABETE3==2",
+        "weight": -0.032
+      },
+      {
+        "column": "_FRT16==other",
+        "weight": -0.0
+      },
+      {
+        "column": "_FRUITEX==other",
+        "weight": 0.0
+      },
+      {
+        "column": "_VEGETEX==other",
+        "weight": 0.0
+      }
+    ],
+    [
+      {
+        "column": "_RFCHOL==missing*DIABETE3==missing",
+        "weight": 0.547
+      },
+      {
+        "column": "_FRT16==other",
+        "weight": -0.308
+      },
+      {
+        "column": "_FRUITEX==other",
+        "weight": 0.308
+      },
+      {
+        "column": "SEX==1*DIABETE3==missing",
+        "weight": -0.238
+      },
+      {
+        "column": "_VEGETEX==other",
+        "weight": 0.228
+      },
+      {
+        "column": "_VEG23==other",
+        "weight": -0.228
+      }
+    ],
+    [
+      {
+        "column": "_CASTHM1==9",
+        "weight": -0.351
+      },
+      {
+        "column": "_LMTSCL1==missing",
+        "weight": 0.346
+      },
+      {
+        "column": "_LMTACT1==missing",
+        "weight": -0.294
+      },
+      {
+        "column": "_LTASTH1==other",
+        "weight": 0.238
+      },
+      {
+        "column": "DIABETE3==missing",
+        "weight": 0.207
+      },
+      {
+        "column": "_ASTHMS1==9",
+        "weight": 0.207
+      }
+    ],
+    [
+      {
+        "column": "_CPRACE==other",
+        "weight": 0.256
+      },
+      {
+        "column": "_CRACE1==other",
+        "weight": -0.256
+      },
+      {
+        "column": "DIABETE3==missing",
+        "weight": 0.237
+      },
+      {
+        "column": "VIPRFVS2==other",
+        "weight": 0.236
+      },
+      {
+        "column": "VIREDIF3==other",
+        "weight": -0.236
+      },
+      {
+        "column": "_RACEGR3==3",
+        "weight": 0.229
+      }
+    ],
+    [
+      {
+        "column": "DIABETE3==missing",
+        "weight": 0.25
+      },
+      {
+        "column": "SEX==1*DIABETE3==missing",
+        "weight": -0.224
+      },
+      {
+        "column": "_DRDXAR1==missing",
+        "weight": 0.199
+      },
+      {
+        "column": "TOLDHI2==7",
+        "weight": -0.196
+      },
+      {
+        "column": "TOLDHI2==other",
+        "weight": -0.196
+      },
+      {
+        "column": "_RFCHOL==9",
+        "weight": 0.195
+      }
+    ],
+    [
+      {
+        "column": "_LMTSCL1==missing",
+        "weight": -0.363
+      },
+      {
+        "column": "_DRDXAR1==missing",
+        "weight": 0.352
+      },
+      {
+        "column": "TOLDHI2==other",
+        "weight": 0.269
+      },
+      {
+        "column": "TOLDHI2==7",
+        "weight": 0.269
+      },
+      {
+        "column": "_RFCHOL==9",
+        "weight": -0.265
+      },
+      {
+        "column": "VIREDIF3==other",
+        "weight": -0.183
+      }
+    ],
+    [
+      {
+        "column": "_LMTACT1==missing",
+        "weight": -0.385
+      },
+      {
+        "column": "_LMTWRK1==missing",
+        "weight": 0.189
+      },
+      {
+        "column": "_CASTHM1==9",
+        "weight": 0.17
+      },
+      {
+        "column": "_RACEGR3==4",
+        "weight": 0.166
+      },
+      {
+        "column": "_RACE==2",
+        "weight": 0.16
+      },
+      {
+        "column": "_CRACE1==2",
+        "weight": -0.157
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==3",
+        "weight": 0.264
+      },
+      {
+        "column": "SMOKDAY2==2",
+        "weight": 0.225
+      },
+      {
+        "column": "_RACEGR3==5",
+        "weight": -0.206
+      },
+      {
+        "column": "_FRUITEX==1",
+        "weight": -0.174
+      },
+      {
+        "column": "_RACE_G1==2",
+        "weight": -0.168
+      },
+      {
+        "column": "_RFSMOK3==2",
+        "weight": -0.162
+      }
+    ],
+    [
+      {
+        "column": "_ASTHMS1==2",
+        "weight": 0.2
+      },
+      {
+        "column": "TOLDHI2==other",
+        "weight": -0.186
+      },
+      {
+        "column": "TOLDHI2==7",
+        "weight": -0.186
+      },
+      {
+        "column": "_RFCHOL==9",
+        "weight": 0.185
+      },
+      {
+        "column": "_ASTHMS1==9",
+        "weight": 0.167
+      },
+      {
+        "column": "_LMTWRK1==1",
+        "weight": 0.164
+      }
+    ],
+    [
+      {
+        "column": "VIPRFVS2==other",
+        "weight": 0.328
+      },
+      {
+        "column": "VIREDIF3==other",
+        "weight": -0.328
+      },
+      {
+        "column": "_RACEGR3==3",
+        "weight": -0.21
+      },
+      {
+        "column": "_RACEG21==9",
+        "weight": -0.209
+      },
+      {
+        "column": "_RACE==9",
+        "weight": 0.169
+      },
+      {
+        "column": "_LMTSCL1==missing",
+        "weight": 0.163
+      }
+    ],
+    [
+      {
+        "column": "_ASTHMS1==9",
+        "weight": -0.321
+      },
+      {
+        "column": "_LMTSCL1==missing",
+        "weight": 0.279
+      },
+      {
+        "column": "_DRDXAR1==missing",
+        "weight": -0.265
+      },
+      {
+        "column": "_RACE_G1==4",
+        "weight": -0.185
+      },
+      {
+        "column": "_TOTINDA==9",
+        "weight": 0.184
+      },
+      {
+        "column": "_RACEGR3==3",
+        "weight": 0.165
+      }
+    ],
+    [
+      {
+        "column": "_RACE==7",
+        "weight": 0.219
+      },
+      {
+        "column": "ASTHNOW==2",
+        "weight": 0.211
+      },
+      {
+        "column": "_RACEGR3==4",
+        "weight": -0.172
+      },
+      {
+        "column": "_RACEGR3==5",
+        "weight": 0.16
+      },
+      {
+        "column": "LADULT==other",
+        "weight": 0.15
+      },
+      {
+        "column": "_CASTHM1==2",
+        "weight": 0.146
+      }
+    ],
+    [
+      {
+        "column": "_ASTHMS1==9",
+        "weight": -0.404
+      },
+      {
+        "column": "_RACE_G1==4",
+        "weight": 0.259
+      },
+      {
+        "column": "_CASTHM1==9",
+        "weight": 0.2
+      },
+      {
+        "column": "_LTASTH1==other",
+        "weight": 0.193
+      },
+      {
+        "column": "_RACEGR3==3",
+        "weight": -0.19
+      },
+      {
+        "column": "_RACE==2",
+        "weight": -0.167
+      }
+    ],
+    [
+      {
+        "column": "_CPRACE==1",
+        "weight": 0.196
+      },
+      {
+        "column": "_CRACE1==1",
+        "weight": -0.196
+      },
+      {
+        "column": "_RACEGR3==4",
+        "weight": -0.185
+      },
+      {
+        "column": "_LMTWRK1==1",
+        "weight": 0.166
+      },
+      {
+        "column": "_FRTLT1==9",
+        "weight": -0.161
+      },
+      {
+        "column": "_ASTHMS1==1",
+        "weight": -0.139
+      }
+    ],
+    [
+      {
+        "column": "_ASTHMS1==9",
+        "weight": 0.351
+      },
+      {
+        "column": "ASTHNOW==other",
+        "weight": -0.326
+      },
+      {
+        "column": "_EDUCAG==other",
+        "weight": 0.155
+      },
+      {
+        "column": "_EDUCAG==1",
+        "weight": 0.155
+      },
+      {
+        "column": "EDUCA==other",
+        "weight": -0.155
+      },
+      {
+        "column": "EDUCA==2",
+        "weight": -0.155
+      }
+    ],
+    [
+      {
+        "column": "CHECKUP1==missing",
+        "weight": -0.215
+      },
+      {
+        "column": "MEDCOST==missing",
+        "weight": 0.215
+      },
+      {
+        "column": "_RACE==4",
+        "weight": -0.21
+      },
+      {
+        "column": "_RACE==3",
+        "weight": -0.21
+      },
+      {
+        "column": "_RACE==other",
+        "weight": -0.21
+      },
+      {
+        "column": "_FRTLT1==9",
+        "weight": -0.192
+      }
+    ],
+    [
+      {
+        "column": "_RACE_G1==4",
+        "weight": 0.221
+      },
+      {
+        "column": "_LMTWRK1==1",
+        "weight": -0.216
+      },
+      {
+        "column": "_TOTINDA==9",
+        "weight": 0.204
+      },
+      {
+        "column": "_RACE==2",
+        "weight": -0.195
+      },
+      {
+        "column": "_RACEGR3==3",
+        "weight": -0.193
+      },
+      {
+        "column": "_RACEGR3==4",
+        "weight": -0.19
+      }
+    ],
+    [
+      {
+        "column": "_RACEGR3==2",
+        "weight": -0.25
+      },
+      {
+        "column": "_RACEG21==9",
+        "weight": -0.229
+      },
+      {
+        "column": "SMOKDAY2==2",
+        "weight": 0.211
+      },
+      {
+        "column": "TOLDHI2==other",
+        "weight": -0.167
+      },
+      {
+        "column": "TOLDHI2==7",
+        "weight": -0.167
+      },
+      {
+        "column": "_RFCHOL==9",
+        "weight": 0.16
+      }
+    ],
+    [
+      {
+        "column": "_RACEGR3==4",
+        "weight": 0.477
+      },
+      {
+        "column": "_RACE==7",
+        "weight": -0.396
+      },
+      {
+        "column": "_RACEGR3==2",
+        "weight": 0.222
+      },
+      {
+        "column": "_RACE==2",
+        "weight": -0.176
+      },
+      {
+        "column": "_CPRACE==1",
+        "weight": 0.163
+      },
+      {
+        "column": "_CRACE1==1",
+        "weight": -0.163
+      }
+    ],
+    [
+      {
+        "column": "_CRACE1==1",
+        "weight": 0.229
+      },
+      {
+        "column": "_CPRACE==1",
+        "weight": -0.229
+      },
+      {
+        "column": "_MISFRTN==1",
+        "weight": -0.166
+      },
+      {
+        "column": "_MISFRTN==2",
+        "weight": -0.166
+      },
+      {
+        "column": "_RFSEAT2==9",
+        "weight": 0.161
+      },
+      {
+        "column": "_RFSEAT3==9",
+        "weight": -0.161
+      }
+    ],
+    [
+      {
+        "column": "_PRACE1==99",
+        "weight": 0.402
+      },
+      {
+        "column": "_MRACE1==99",
+        "weight": -0.402
+      },
+      {
+        "column": "_RACEGR3==9",
+        "weight": -0.228
+      },
+      {
+        "column": "_RACE_G1==missing",
+        "weight": 0.207
+      },
+      {
+        "column": "_RACEG21==9",
+        "weight": 0.207
+      },
+      {
+        "column": "_RACE==9",
+        "weight": -0.186
+      }
+    ],
+    [
+      {
+        "column": "_MRACE1==99",
+        "weight": 0.221
+      },
+      {
+        "column": "_PRACE1==99",
+        "weight": -0.221
+      },
+      {
+        "column": "_VEGRESP==0",
+        "weight": 0.215
+      },
+      {
+        "column": "_RACEG21==9",
+        "weight": 0.177
+      },
+      {
+        "column": "SEATBELT==2",
+        "weight": -0.167
+      },
+      {
+        "column": "_RFSEAT3==2",
+        "weight": 0.167
+      }
+    ],
+    [
+      {
+        "column": "BLOODCHO==other",
+        "weight": -0.298
+      },
+      {
+        "column": "BLOODCHO==7",
+        "weight": -0.298
+      },
+      {
+        "column": "SMOKDAY2==2",
+        "weight": 0.2
+      },
+      {
+        "column": "_SMOKER3==2",
+        "weight": -0.198
+      },
+      {
+        "column": "_MRACE1==99",
+        "weight": -0.194
+      },
+      {
+        "column": "_PRACE1==99",
+        "weight": 0.194
+      }
+    ],
+    [
+      {
+        "column": "CHOLCHK==7",
+        "weight": -0.328
+      },
+      {
+        "column": "_CHOLCHK==9",
+        "weight": 0.328
+      },
+      {
+        "column": "CHOLCHK==other",
+        "weight": -0.328
+      },
+      {
+        "column": "_FRTRESP==0",
+        "weight": 0.199
+      },
+      {
+        "column": "_MISFRTN==1",
+        "weight": -0.174
+      },
+      {
+        "column": "_MISFRTN==2",
+        "weight": -0.174
+      }
+    ],
+    [
+      {
+        "column": "_SMOKER3==2",
+        "weight": -0.271
+      },
+      {
+        "column": "_RACEGR3==3",
+        "weight": -0.251
+      },
+      {
+        "column": "SMOKDAY2==2",
+        "weight": 0.23
+      },
+      {
+        "column": "_CRACE1==1",
+        "weight": -0.215
+      },
+      {
+        "column": "_CPRACE==1",
+        "weight": 0.215
+      },
+      {
+        "column": "_PA300R2==3",
+        "weight": 0.203
+      }
+    ],
+    [
+      {
+        "column": "_SMOKER3==2",
+        "weight": -0.265
+      },
+      {
+        "column": "SMOKDAY2==2",
+        "weight": 0.206
+      },
+      {
+        "column": "_PA150R2==9",
+        "weight": -0.193
+      },
+      {
+        "column": "_PAINDX1==9",
+        "weight": 0.193
+      },
+      {
+        "column": "_RACEGR3==4",
+        "weight": 0.188
+      },
+      {
+        "column": "_RACE==7",
+        "weight": -0.175
+      }
+    ],
+    [
+      {
+        "column": "ASTHNOW==2",
+        "weight": 0.236
+      },
+      {
+        "column": "_CPRACE==1",
+        "weight": -0.211
+      },
+      {
+        "column": "_CRACE1==1",
+        "weight": 0.211
+      },
+      {
+        "column": "_RACEGR3==2",
+        "weight": 0.2
+      },
+      {
+        "column": "_PACAT1==9",
+        "weight": -0.189
+      },
+      {
+        "column": "_RFSEAT3==2",
+        "weight": 0.163
+      }
+    ],
+    [
+      {
+        "column": "_RACE==8",
+        "weight": 0.26
+      },
+      {
+        "column": "SMOKDAY2==2",
+        "weight": 0.247
+      },
+      {
+        "column": "_RACEGR3==5",
+        "weight": -0.229
+      },
+      {
+        "column": "_SMOKER3==2",
+        "weight": -0.201
+      },
+      {
+        "column": "_RACEGR3==2",
+        "weight": 0.175
+      },
+      {
+        "column": "_RFSEAT3==2",
+        "weight": -0.164
+      }
+    ],
+    [
+      {
+        "column": "SMOKDAY2==2",
+        "weight": 0.213
+      },
+      {
+        "column": "_INCOMG==1",
+        "weight": -0.178
+      },
+      {
+        "column": "INCOME2==2",
+        "weight": 0.178
+      },
+      {
+        "column": "INCOME2==1",
+        "weight": 0.178
+      },
+      {
+        "column": "_VEGRESP==0",
+        "weight": 0.178
+      },
+      {
+        "column": "_SMOKER3==2",
+        "weight": -0.173
+      }
+    ],
+    [
+      {
+        "column": "_RACE==8",
+        "weight": -0.263
+      },
+      {
+        "column": "_PA30021==9",
+        "weight": 0.213
+      },
+      {
+        "column": "_PACAT1==3",
+        "weight": -0.195
+      },
+      {
+        "column": "_PA150R2==2",
+        "weight": 0.194
+      },
+      {
+        "column": "_SMOKER3==2",
+        "weight": 0.167
+      },
+      {
+        "column": "_CASTHM1==2",
+        "weight": -0.163
+      }
+    ],
+    [
+      {
+        "column": "_FRTRESP==0",
+        "weight": -0.28
+      },
+      {
+        "column": "_RFBMI5==9",
+        "weight": -0.226
+      },
+      {
+        "column": "_BMI5CAT==missing",
+        "weight": 0.226
+      },
+      {
+        "column": "ARTHSOCL==2",
+        "weight": -0.192
+      },
+      {
+        "column": "PVTRESD2==other",
+        "weight": 0.186
+      },
+      {
+        "column": "PVTRESD2==1",
+        "weight": 0.186
+      }
+    ],
+    [
+      {
+        "column": "_RACE==8",
+        "weight": -0.348
+      },
+      {
+        "column": "_RACEGR3==5",
+        "weight": 0.263
+      },
+      {
+        "column": "ARTHDIS2==2",
+        "weight": 0.238
+      },
+      {
+        "column": "_RFBMI5==9",
+        "weight": -0.215
+      },
+      {
+        "column": "_BMI5CAT==missing",
+        "weight": 0.215
+      },
+      {
+        "column": "_LMTWRK1==2",
+        "weight": -0.191
+      }
+    ],
+    [
+      {
+        "column": "ARTHSOCL==2",
+        "weight": -0.275
+      },
+      {
+        "column": "ARTHDIS2==2",
+        "weight": 0.272
+      },
+      {
+        "column": "_LMTWRK1==2",
+        "weight": -0.256
+      },
+      {
+        "column": "_LMTSCL1==2",
+        "weight": 0.247
+      },
+      {
+        "column": "PVTRESD1==other",
+        "weight": -0.24
+      },
+      {
+        "column": "INCOME2==5",
+        "weight": -0.185
+      }
+    ],
+    [
+      {
+        "column": "_PA300R2==9",
+        "weight": 0.287
+      },
+      {
+        "column": "_PAREC1==9",
+        "weight": 0.266
+      },
+      {
+        "column": "_PASTAE1==9",
+        "weight": -0.266
+      },
+      {
+        "column": "_RFSEAT3==2",
+        "weight": -0.239
+      },
+      {
+        "column": "SEATBELT==2",
+        "weight": 0.239
+      },
+      {
+        "column": "_FRTRESP==0",
+        "weight": 0.2
+      }
+    ],
+    [
+      {
+        "column": "_INCOMG==4",
+        "weight": 0.246
+      },
+      {
+        "column": "INCOME2==6",
+        "weight": -0.246
+      },
+      {
+        "column": "ARTHDIS2==1",
+        "weight": 0.22
+      },
+      {
+        "column": "_RACE==8",
+        "weight": -0.213
+      },
+      {
+        "column": "_LMTWRK1==1",
+        "weight": -0.211
+      },
+      {
+        "column": "_FRUITEX==1",
+        "weight": 0.192
+      }
+    ],
+    [
+      {
+        "column": "_LMTSCL1==3",
+        "weight": 0.249
+      },
+      {
+        "column": "_PA300R2==3",
+        "weight": 0.23
+      },
+      {
+        "column": "BPHIGH4==1",
+        "weight": -0.208
+      },
+      {
+        "column": "CTELNUM1==1",
+        "weight": 0.2
+      },
+      {
+        "column": "PVTRESD2==1",
+        "weight": -0.19
+      },
+      {
+        "column": "PVTRESD2==other",
+        "weight": -0.19
+      }
+    ],
+    [
+      {
+        "column": "_AGE80*_RFCHOL==9",
+        "weight": -0.227
+      },
+      {
+        "column": "LANDLINE==1",
+        "weight": 0.225
+      },
+      {
+        "column": "CSTATE==1",
+        "weight": -0.225
+      },
+      {
+        "column": "CSTATE==2",
+        "weight": -0.225
+      },
+      {
+        "column": "_DUALUSE==2",
+        "weight": -0.223
+      },
+      {
+        "column": "_RFHLTH==2",
+        "weight": 0.203
+      }
+    ],
+    [
+      {
+        "column": "INCOME2==5",
+        "weight": 0.325
+      },
+      {
+        "column": "_INCOMG==3",
+        "weight": -0.325
+      },
+      {
+        "column": "_SMOKER3==2",
+        "weight": 0.257
+      },
+      {
+        "column": "SMOKDAY2==1",
+        "weight": 0.23
+      },
+      {
+        "column": "_PA300R2==3",
+        "weight": 0.19
+      },
+      {
+        "column": "INCOME2==6",
+        "weight": 0.169
+      }
+    ],
+    [
+      {
+        "column": "ARTHSOCL==2",
+        "weight": 0.397
+      },
+      {
+        "column": "_LMTSCL1==2",
+        "weight": -0.359
+      },
+      {
+        "column": "_INCOMG==4",
+        "weight": -0.27
+      },
+      {
+        "column": "INCOME2==6",
+        "weight": 0.27
+      },
+      {
+        "column": "INCOME2==5",
+        "weight": -0.238
+      },
+      {
+        "column": "_INCOMG==3",
+        "weight": 0.238
+      }
+    ],
+    [
+      {
+        "column": "_PA150R2==2",
+        "weight": 0.273
+      },
+      {
+        "column": "_FRTRESP==0",
+        "weight": 0.233
+      },
+      {
+        "column": "_PACAT1==3",
+        "weight": -0.213
+      },
+      {
+        "column": "LMTJOIN3==1",
+        "weight": -0.211
+      },
+      {
+        "column": "_INCOMG==4",
+        "weight": 0.206
+      },
+      {
+        "column": "INCOME2==6",
+        "weight": -0.206
+      }
+    ],
+    [
+      {
+        "column": "TOLDHI2==missing",
+        "weight": 0.335
+      },
+      {
+        "column": "_INCOMG==3",
+        "weight": -0.294
+      },
+      {
+        "column": "INCOME2==5",
+        "weight": 0.294
+      },
+      {
+        "column": "_PA150R2==3",
+        "weight": 0.214
+      },
+      {
+        "column": "CTELENUM==missing",
+        "weight": -0.174
+      },
+      {
+        "column": "_RFCHOL==missing",
+        "weight": -0.171
+      }
+    ],
+    [
+      {
+        "column": "_LMTACT1==1",
+        "weight": -0.291
+      },
+      {
+        "column": "SMOKDAY2==1",
+        "weight": 0.261
+      },
+      {
+        "column": "_RFSMOK3==2",
+        "weight": -0.239
+      },
+      {
+        "column": "ARTHSOCL==3",
+        "weight": 0.235
+      },
+      {
+        "column": "LMTJOIN3==1",
+        "weight": 0.223
+      },
+      {
+        "column": "INCOME2==6",
+        "weight": 0.193
+      }
+    ],
+    [
+      {
+        "column": "TOLDHI2==missing",
+        "weight": -0.316
+      },
+      {
+        "column": "CTELENUM==missing",
+        "weight": -0.308
+      },
+      {
+        "column": "CHOLCHK==missing",
+        "weight": 0.263
+      },
+      {
+        "column": "_LTASTH1==2",
+        "weight": 0.229
+      },
+      {
+        "column": "PVTRESD1==other",
+        "weight": -0.222
+      },
+      {
+        "column": "ASTHMA3==1",
+        "weight": -0.183
+      }
+    ],
+    [
+      {
+        "column": "_PACAT1==3",
+        "weight": 0.342
+      },
+      {
+        "column": "_PA150R2==2",
+        "weight": -0.303
+      },
+      {
+        "column": "TOLDHI2==missing",
+        "weight": 0.249
+      },
+      {
+        "column": "LMTJOIN3==1",
+        "weight": -0.204
+      },
+      {
+        "column": "CHOLCHK==missing",
+        "weight": -0.184
+      },
+      {
+        "column": "CTELENUM==missing",
+        "weight": -0.181
+      }
+    ],
+    [
+      {
+        "column": "PVTRESD1==missing",
+        "weight": -0.33
+      },
+      {
+        "column": "PVTRESD1==other",
+        "weight": 0.226
+      },
+      {
+        "column": "CTELNUM1==1",
+        "weight": -0.204
+      },
+      {
+        "column": "_INCOMG==4",
+        "weight": 0.196
+      },
+      {
+        "column": "INCOME2==6",
+        "weight": -0.196
+      },
+      {
+        "column": "HIVTST6==missing",
+        "weight": 0.181
+      }
+    ],
+    [
+      {
+        "column": "HIVTST6==missing",
+        "weight": -0.405
+      },
+      {
+        "column": "_AIDTST3==missing",
+        "weight": 0.405
+      },
+      {
+        "column": "PAMISS1_==9",
+        "weight": -0.231
+      },
+      {
+        "column": "_RFSMOK3==2",
+        "weight": 0.2
+      },
+      {
+        "column": "CTELNUM1==1",
+        "weight": -0.188
+      },
+      {
+        "column": "_PAINDX1==9",
+        "weight": -0.187
+      }
+    ],
+    [
+      {
+        "column": "_PACAT1==4",
+        "weight": 0.568
+      },
+      {
+        "column": "_PA300R2==3",
+        "weight": -0.349
+      },
+      {
+        "column": "_PA150R2==3",
+        "weight": -0.255
+      },
+      {
+        "column": "_LMTACT1==1",
+        "weight": 0.2
+      },
+      {
+        "column": "LMTJOIN3==1",
+        "weight": -0.195
+      },
+      {
+        "column": "CTELENUM==missing",
+        "weight": 0.159
+      }
+    ],
+    [
+      {
+        "column": "LMTJOIN3==1",
+        "weight": -0.365
+      },
+      {
+        "column": "_LMTACT1==1",
+        "weight": 0.321
+      },
+      {
+        "column": "PVTRESD2==1",
+        "weight": -0.278
+      },
+      {
+        "column": "PVTRESD2==other",
+        "weight": -0.278
+      },
+      {
+        "column": "_LTASTH1==2",
+        "weight": -0.232
+      },
+      {
+        "column": "HAVARTH3==1",
+        "weight": -0.224
+      }
+    ],
+    [
+      {
+        "column": "ASTHMA3==1",
+        "weight": 0.454
+      },
+      {
+        "column": "_LTASTH1==2",
+        "weight": -0.404
+      },
+      {
+        "column": "CTELENUM==missing",
+        "weight": -0.281
+      },
+      {
+        "column": "_CASTHM1==2",
+        "weight": -0.274
+      },
+      {
+        "column": "_PACAT1==4",
+        "weight": 0.23
+      },
+      {
+        "column": "PVTRESD1==missing",
+        "weight": 0.218
+      }
+    ],
+    [
+      {
+        "column": "_PACAT1==4",
+        "weight": 0.323
+      },
+      {
+        "column": "HAVARTH3==1",
+        "weight": 0.308
+      },
+      {
+        "column": "SEX==1*_RFCHOL==9",
+        "weight": -0.257
+      },
+      {
+        "column": "_PA150R2==3",
+        "weight": -0.179
+      },
+      {
+        "column": "_BMI5*_RFHYPE5==other",
+        "weight": -0.176
+      },
+      {
+        "column": "SMOKE100==1",
+        "weight": 0.152
+      }
+    ],
+    [
+      {
+        "column": "SEX==1*_RFCHOL==9",
+        "weight": -0.697
+      },
+      {
+        "column": "_RFCHOL==9",
+        "weight": 0.192
+      },
+      {
+        "column": "SEX==1*_RFHYPE5==other",
+        "weight": 0.188
+      },
+      {
+        "column": "_BMI5*_RFHYPE5==other",
+        "weight": 0.152
+      },
+      {
+        "column": "SMOKE100==other",
+        "weight": -0.142
+      },
+      {
+        "column": "SMOKE100==1",
+        "weight": -0.142
+      }
+    ],
+    [
+      {
+        "column": "_BMI5*_RFHYPE5==other",
+        "weight": 0.458
+      },
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": 0.335
+      },
+      {
+        "column": "SEX==1*_RFHYPE5==other",
+        "weight": 0.254
+      },
+      {
+        "column": "SEX==1*_RFCHOL==9",
+        "weight": 0.253
+      },
+      {
+        "column": "_RACEG21==2",
+        "weight": -0.206
+      },
+      {
+        "column": "_AGE80*_RFHYPE5==other",
+        "weight": -0.173
+      }
+    ],
+    [
+      {
+        "column": "SEQNO",
+        "weight": 0.555
+      },
+      {
+        "column": "_PSU",
+        "weight": -0.555
+      },
+      {
+        "column": "CTELNUM1==1",
+        "weight": 0.36
+      },
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": 0.225
+      },
+      {
+        "column": "SEX==1*_RFHYPE5==other",
+        "weight": -0.136
+      },
+      {
+        "column": "CPDEMO1==missing",
+        "weight": -0.124
+      }
+    ],
+    [
+      {
+        "column": "SEX==1*_RFHYPE5==other",
+        "weight": -0.792
+      },
+      {
+        "column": "SEX==1*_RFCHOL==9",
+        "weight": -0.216
+      },
+      {
+        "column": "_RFHYPE5==other",
+        "weight": 0.214
+      },
+      {
+        "column": "_BMI5*_RFHYPE5==other",
+        "weight": 0.177
+      },
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": 0.124
+      },
+      {
+        "column": "CTELNUM1==1",
+        "weight": -0.124
+      }
+    ],
+    [
+      {
+        "column": "_BMI5*_RFHYPE5==other",
+        "weight": -0.464
+      },
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": 0.401
+      },
+      {
+        "column": "_AGE80*_SMOKER3==9",
+        "weight": 0.221
+      },
+      {
+        "column": "SEX==1*_SMOKER3==9",
+        "weight": -0.17
+      },
+      {
+        "column": "CTELENUM==missing",
+        "weight": -0.164
+      },
+      {
+        "column": "_RFSMOK3==2",
+        "weight": -0.157
+      }
+    ],
+    [
+      {
+        "column": "_AGE80*_RFCHOL==9",
+        "weight": 0.414
+      },
+      {
+        "column": "_AGE80*_SMOKER3==9",
+        "weight": 0.369
+      },
+      {
+        "column": "CTELENUM==missing",
+        "weight": 0.303
+      },
+      {
+        "column": "PVTRESD1==missing",
+        "weight": 0.267
+      },
+      {
+        "column": "_AGE80*_SMOKER3==1",
+        "weight": -0.221
+      },
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": -0.192
+      }
+    ],
+    [
+      {
+        "column": "_AGE80*_RFHYPE5==other",
+        "weight": 0.335
+      },
+      {
+        "column": "_RFHYPE5==other*_RFCHOL==9",
+        "weight": 0.26
+      },
+      {
+        "column": "HAVARTH3==1",
+        "weight": 0.253
+      },
+      {
+        "column": "_LMTACT1==9",
+        "weight": -0.247
+      },
+      {
+        "column": "_DRDXAR1==1",
+        "weight": 0.234
+      },
+      {
+        "column": "SEX==1*_SMOKER3==9",
+        "weight": 0.233
+      }
+    ],
+    [
+      {
+        "column": "_AGE80*_TOTINDA==9",
+        "weight": -0.879
+      },
+      {
+        "column": "_AGE80*_TOTINDA",
+        "weight": 0.242
+      },
+      {
+        "column": "_AGE80*_SMOKER3==9",
+        "weight": -0.195
+      },
+      {
+        "column": "_AGE80*_RFHYPE5==other",
+        "weight": 0.168
+      },
+      {
+        "column": "_AGE80*_RFCHOL==9",
+        "weight": 0.133
+      },
+      {
+        "column": "_AGE80*_SMOKER3==1",
+        "weight": 0.117
+      }
+    ],
+    [
+      {
+        "column": "bias",
+        "weight": 0.505
+      },
+      {
+        "column": "SEX==1*_SMOKER3==9",
+        "weight": -0.423
+      },
+      {
+        "column": "_AGE80*_RFHYPE5==other",
+        "weight": 0.277
+      },
+      {
+        "column": "_PACAT1==2",
+        "weight": -0.255
+      },
+      {
+        "column": "SEX==1*_SMOKER3==1",
+        "weight": 0.254
+      },
+      {
+        "column": "CELLFON3==1",
+        "weight": -0.234
+      }
+    ],
+    [
+      {
+        "column": "_AGE80*SEX==1",
+        "weight": -0.496
+      },
+      {
+        "column": "_AGE65YR==3",
+        "weight": -0.318
+      },
+      {
+        "column": "_AGE65YR==2",
+        "weight": -0.317
+      },
+      {
+        "column": "_AGE80",
+        "weight": 0.272
+      },
+      {
+        "column": "_AGE80*SEX",
+        "weight": -0.245
+      },
+      {
+        "column": "_AGE80*_RFCHOL==9",
+        "weight": -0.219
+      }
+    ],
+    [
+      {
+        "column": "PA1VIGM_",
+        "weight": 0.518
+      },
+      {
+        "column": "_PAINDX1==2",
+        "weight": 0.502
+      },
+      {
+        "column": "PAVIG11_",
+        "weight": -0.38
+      },
+      {
+        "column": "PAVIG21_",
+        "weight": -0.304
+      },
+      {
+        "column": "_PA150R2==2",
+        "weight": -0.202
+      },
+      {
+        "column": "_PACAT1==3",
+        "weight": -0.202
+      }
+    ]
+  ],
+  "low_support_columns": [
+    "PVTRESD1==other",
+    "COLGHOUS==other",
+    "LADULT==other",
+    "GENHLTH==missing",
+    "MEDCOST==missing",
+    "CHECKUP1==missing",
+    "BPHIGH4==missing",
+    "CHCSCNCR==missing",
+    "HAVARTH3==missing",
+    "HAVARTH3==other",
+    "DIABETE3==missing",
+    "VETERAN3==missing",
+    "PDIABTST==other",
+    "INSULIN==other",
+    "DIABEDU==other",
+    "CDDISCUS==other",
+    "CVDASPRN==other",
+    "ARTHEDU==other",
+    "TETANUS==other",
+    "HADMAM==other",
+    "HPVTEST==other",
+    "HADHYST2==other",
+    "MISTMNT==other",
+    "ADANXEV==other",
+    "QSTLANG==missing",
+    "QSTLANG==other",
+    "_FRT16==other",
+    "_VEG23==other",
+    "_FRUITEX==other",
+    "_VEGETEX==other",
+    "_AGE80*DIABETE3==missing",
+    "_AGE80*GENHLTH==missing",
+    "_BMI5*DIABETE3==missing",
+    "SEX==1*DIABETE3==2",
+    "SEX==1*DIABETE3==missing",
+    "_RFHYPE5==2*DIABETE3==missing",
+    "_RFHYPE5==other*DIABETE3==2",
+    "_RFHYPE5==other*DIABETE3==4",
+    "_RFHYPE5==other*DIABETE3==missing",
+    "_RFHYPE5==other*DIABETE3==other",
+    "_RFCHOL==2*DIABETE3==missing",
+    "_RFCHOL==9*DIABETE3==2",
+    "_RFCHOL==9*DIABETE3==4",
+    "_RFCHOL==9*DIABETE3==missing",
+    "_RFCHOL==9*DIABETE3==other",
+    "_RFCHOL==missing*DIABETE3==missing",
+    "GENHLTH==missing*DIFFWALK==1",
+    "GENHLTH==missing*DIFFWALK==missing",
+    "GENHLTH==missing*DIFFWALK==other",
+    "GENHLTH==other*DIFFWALK==missing",
+    "GENHLTH==other*DIFFWALK==other"
+  ],
+  "redundant_columns": [
+    "IDAY",
+    "_PSU",
+    "STRFREQ_",
+    "PA1VIGM_",
+    "PVTRESD1==missing",
+    "CELLFON3==2",
+    "CTELNUM1==1",
+    "CELLFON2==1",
+    "PVTRESD2==other",
+    "BPMEDS==other",
+    "CHOLCHK==missing",
+    "TOLDHI2==missing",
+    "ASTHNOW==other",
+    "NUMHHOL2==missing",
+    "NUMPHON2==other",
+    "CPDEMO1==missing",
+    "VIPRFVS2==other",
+    "VIGLUMA2==other",
+    "ASINHALR==other",
+    "RDUCHART==other",
+    "PSATEST1==other",
+    "QSTVER==23",
+    "_CPRACE==1",
+    "_CPRACE==2",
+    "_CPRACE==7",
+    "_CPRACE==99",
+    "_CPRACE==other",
+    "_DUALUSE==2",
+    "_DUALUSE==9",
+    "_RFHLTH==2",
+    "_RFHYPE5==2",
+    "_CHOLCHK==2",
+    "_CHOLCHK==3",
+    "_CHOLCHK==9",
+    "_RFCHOL==2",
+    "_RFCHOL==9",
+    "_RFCHOL==missing",
+    "_LTASTH1==2",
+    "_LTASTH1==other",
+    "_CASTHM1==2",
+    "_CASTHM1==9",
+    "_ASTHMS1==1",
+    "_ASTHMS1==2",
+    "_ASTHMS1==9",
+    "_DRDXAR1==1",
+    "_MRACE1==77",
+    "_MRACE1==99",
+    "_RACE==8",
+    "_RACEG21==2",
+    "_RACEG21==9",
+    "_RACEGR3==2",
+    "_RACEGR3==3",
+    "_RACEGR3==4",
+    "_RACEGR3==5",
+    "_RACEGR3==9",
+    "_RACE_G1==2",
+    "_RACE_G1==3",
+    "_RACE_G1==4",
+    "_RACE_G1==5",
+    "_RACE_G1==missing",
+    "_AGE65YR==3",
+    "_RFBMI5==1",
+    "_RFBMI5==9",
+    "_EDUCAG==2",
+    "_EDUCAG==3",
+    "_EDUCAG==other",
+    "_INCOMG==1",
+    "_INCOMG==2",
+    "_INCOMG==3",
+    "_INCOMG==4",
+    "_INCOMG==9",
+    "_SMOKER3==1",
+    "_SMOKER3==2",
+    "_SMOKER3==3",
+    "_SMOKER3==9",
+    "_RFSMOK3==2",
+    "_RFSMOK3==9",
+    "_FRTRESP==0",
+    "_VEGRESP==0",
+    "_FRTLT1==9",
+    "_VEGLT1==9",
+    "_FRUITEX==1",
+    "_VEGETEX==1",
+    "_TOTINDA==2",
+    "_TOTINDA==9",
+    "PAMISS1_==9",
+    "_PAINDX1==2",
+    "_PA150R2==2",
+    "_PA150R2==3",
+    "_PA150R2==9",
+    "_PA300R2==1",
+    "_PA300R2==3",
+    "_PA300R2==9",
+    "_PA30021==1",
+    "_PA30021==9",
+    "_PASTAE1==1",
+    "_PASTAE1==9",
+    "_LMTACT1==1",
+    "_LMTACT1==2",
+    "_LMTACT1==9",
+    "_LMTACT1==missing",
+    "_LMTWRK1==1",
+    "_LMTWRK1==2",
+    "_LMTWRK1==9",
+    "_LMTWRK1==missing",
+    "_LMTSCL1==1",
+    "_LMTSCL1==2",
+    "_LMTSCL1==3",
+    "_LMTSCL1==9",
+    "_LMTSCL1==missing",
+    "_RFSEAT2==2",
+    "_RFSEAT3==2",
+    "_RFSEAT3==9",
+    "_FLSHOT6==9",
+    "_PNEUMO2==9",
+    "_AIDTST3==1",
+    "_AIDTST3==9",
+    "_AIDTST3==missing",
+    "_AGE80*SEX==1",
+    "_AGE80*_SMOKER3==9",
+    "_AGE80*_RFHYPE5==other",
+    "_AGE80*_RFCHOL==9",
+    "_AGE80*_TOTINDA==9",
+    "_BMI5*_RFHYPE5==other",
+    "SEX==1*_SMOKER3==9",
+    "SEX==1*_RFHYPE5==other",
+    "SEX==1*_RFCHOL==9",
+    "_RFHYPE5==other*_RFCHOL==9"
+  ],
+  "columns_to_drop": [
+    "PVTRESD1==other",
+    "COLGHOUS==other",
+    "LADULT==other",
+    "GENHLTH==missing",
+    "MEDCOST==missing",
+    "CHECKUP1==missing",
+    "BPHIGH4==missing",
+    "CHCSCNCR==missing",
+    "HAVARTH3==missing",
+    "HAVARTH3==other",
+    "DIABETE3==missing",
+    "VETERAN3==missing",
+    "PDIABTST==other",
+    "INSULIN==other",
+    "DIABEDU==other",
+    "CDDISCUS==other",
+    "CVDASPRN==other",
+    "ARTHEDU==other",
+    "TETANUS==other",
+    "HADMAM==other",
+    "HPVTEST==other",
+    "HADHYST2==other",
+    "MISTMNT==other",
+    "ADANXEV==other",
+    "QSTLANG==missing",
+    "QSTLANG==other",
+    "_FRT16==other",
+    "_VEG23==other",
+    "_FRUITEX==other",
+    "_VEGETEX==other",
+    "_AGE80*DIABETE3==missing",
+    "_AGE80*GENHLTH==missing",
+    "_BMI5*DIABETE3==missing",
+    "SEX==1*DIABETE3==2",
+    "SEX==1*DIABETE3==missing",
+    "_RFHYPE5==2*DIABETE3==missing",
+    "_RFHYPE5==other*DIABETE3==2",
+    "_RFHYPE5==other*DIABETE3==4",
+    "_RFHYPE5==other*DIABETE3==missing",
+    "_RFHYPE5==other*DIABETE3==other",
+    "_RFCHOL==2*DIABETE3==missing",
+    "_RFCHOL==9*DIABETE3==2",
+    "_RFCHOL==9*DIABETE3==4",
+    "_RFCHOL==9*DIABETE3==missing",
+    "_RFCHOL==9*DIABETE3==other",
+    "_RFCHOL==missing*DIABETE3==missing",
+    "GENHLTH==missing*DIFFWALK==1",
+    "GENHLTH==missing*DIFFWALK==missing",
+    "GENHLTH==missing*DIFFWALK==other",
+    "GENHLTH==other*DIFFWALK==missing",
+    "GENHLTH==other*DIFFWALK==other",
+    "IDAY",
+    "_PSU",
+    "STRFREQ_",
+    "PA1VIGM_",
+    "PVTRESD1==missing",
+    "CELLFON3==2",
+    "CTELNUM1==1",
+    "CELLFON2==1",
+    "PVTRESD2==other",
+    "BPMEDS==other",
+    "CHOLCHK==missing",
+    "TOLDHI2==missing",
+    "ASTHNOW==other",
+    "NUMHHOL2==missing",
+    "NUMPHON2==other",
+    "CPDEMO1==missing",
+    "VIPRFVS2==other",
+    "VIGLUMA2==other",
+    "ASINHALR==other",
+    "RDUCHART==other",
+    "PSATEST1==other",
+    "QSTVER==23",
+    "_CPRACE==1",
+    "_CPRACE==2",
+    "_CPRACE==7",
+    "_CPRACE==99",
+    "_CPRACE==other",
+    "_DUALUSE==2",
+    "_DUALUSE==9",
+    "_RFHLTH==2",
+    "_RFHYPE5==2",
+    "_CHOLCHK==2",
+    "_CHOLCHK==3",
+    "_CHOLCHK==9",
+    "_RFCHOL==2",
+    "_RFCHOL==9",
+    "_RFCHOL==missing",
+    "_LTASTH1==2",
+    "_LTASTH1==other",
+    "_CASTHM1==2",
+    "_CASTHM1==9",
+    "_ASTHMS1==1",
+    "_ASTHMS1==2",
+    "_ASTHMS1==9",
+    "_DRDXAR1==1",
+    "_MRACE1==77",
+    "_MRACE1==99",
+    "_RACE==8",
+    "_RACEG21==2",
+    "_RACEG21==9",
+    "_RACEGR3==2",
+    "_RACEGR3==3",
+    "_RACEGR3==4",
+    "_RACEGR3==5",
+    "_RACEGR3==9",
+    "_RACE_G1==2",
+    "_RACE_G1==3",
+    "_RACE_G1==4",
+    "_RACE_G1==5",
+    "_RACE_G1==missing",
+    "_AGE65YR==3",
+    "_RFBMI5==1",
+    "_RFBMI5==9",
+    "_EDUCAG==2",
+    "_EDUCAG==3",
+    "_EDUCAG==other",
+    "_INCOMG==1",
+    "_INCOMG==2",
+    "_INCOMG==3",
+    "_INCOMG==4",
+    "_INCOMG==9",
+    "_SMOKER3==1",
+    "_SMOKER3==2",
+    "_SMOKER3==3",
+    "_SMOKER3==9",
+    "_RFSMOK3==2",
+    "_RFSMOK3==9",
+    "_FRTRESP==0",
+    "_VEGRESP==0",
+    "_FRTLT1==9",
+    "_VEGLT1==9",
+    "_FRUITEX==1",
+    "_VEGETEX==1",
+    "_TOTINDA==2",
+    "_TOTINDA==9",
+    "PAMISS1_==9",
+    "_PAINDX1==2",
+    "_PA150R2==2",
+    "_PA150R2==3",
+    "_PA150R2==9",
+    "_PA300R2==1",
+    "_PA300R2==3",
+    "_PA300R2==9",
+    "_PA30021==1",
+    "_PA30021==9",
+    "_PASTAE1==1",
+    "_PASTAE1==9",
+    "_LMTACT1==1",
+    "_LMTACT1==2",
+    "_LMTACT1==9",
+    "_LMTACT1==missing",
+    "_LMTWRK1==1",
+    "_LMTWRK1==2",
+    "_LMTWRK1==9",
+    "_LMTWRK1==missing",
+    "_LMTSCL1==1",
+    "_LMTSCL1==2",
+    "_LMTSCL1==3",
+    "_LMTSCL1==9",
+    "_LMTSCL1==missing",
+    "_RFSEAT2==2",
+    "_RFSEAT3==2",
+    "_RFSEAT3==9",
+    "_FLSHOT6==9",
+    "_PNEUMO2==9",
+    "_AIDTST3==1",
+    "_AIDTST3==9",
+    "_AIDTST3==missing",
+    "_AGE80*SEX==1",
+    "_AGE80*_SMOKER3==9",
+    "_AGE80*_RFHYPE5==other",
+    "_AGE80*_RFCHOL==9",
+    "_AGE80*_TOTINDA==9",
+    "_BMI5*_RFHYPE5==other",
+    "SEX==1*_SMOKER3==9",
+    "SEX==1*_RFHYPE5==other",
+    "SEX==1*_RFCHOL==9",
+    "_RFHYPE5==other*_RFCHOL==9"
+  ],
+  "columns_kept": [
+    "bias",
+    "_STATE",
+    "FMONTH",
+    "IDATE",
+    "IMONTH",
+    "SEQNO",
+    "NUMADULT",
+    "NUMMEN",
+    "NUMWOMEN",
+    "HHADULT",
+    "PHYSHLTH",
+    "MENTHLTH",
+    "POORHLTH",
+    "DIABAGE2",
+    "CHILDREN",
+    "WEIGHT2",
+    "HEIGHT3",
+    "ALCDAY5",
+    "AVEDRNK2",
+    "DRNK3GE5",
+    "MAXDRNKS",
+    "FRUITJU1",
+    "FRUIT1",
+    "FVBEANS",
+    "FVGREEN",
+    "FVORANG",
+    "VEGETAB1",
+    "EXRACT11",
+    "EXEROFT1",
+    "EXERHMM1",
+    "EXRACT21",
+    "EXEROFT2",
+    "EXERHMM2",
+    "STRENGTH",
+    "JOINPAIN",
+    "FLSHTMY2",
+    "IMFVPLAC",
+    "HIVTSTD3",
+    "WHRTST10",
+    "BLDSUGAR",
+    "FEETCHK2",
+    "DOCTDIAB",
+    "CHKHEMO3",
+    "FEETCHK",
+    "CRGVREL1",
+    "CRGVPRB1",
+    "LONGWTCH",
+    "ASTHMAGE",
+    "ASDRVIST",
+    "ASRCHKUP",
+    "ASACTLIM",
+    "SCNTWRK1",
+    "SCNTLWK1",
+    "ADPLEASR",
+    "ADDOWN",
+    "ADSLEEP",
+    "ADENERGY",
+    "ADEAT1",
+    "ADFAIL",
+    "ADTHINK",
+    "ADMOVE",
+    "_STSTR",
+    "_STRWT",
+    "_RAWRAKE",
+    "_WT2RAKE",
+    "_CLLCPWT",
+    "_DUALCOR",
+    "_LLCPWT",
+    "_AGEG5YR",
+    "_AGE80",
+    "HTIN4",
+    "HTM4",
+    "WTKG3",
+    "_BMI5",
+    "DROCDY3_",
+    "_DRNKWEK",
+    "FTJUDA1_",
+    "FRUTDA1_",
+    "BEANDAY_",
+    "GRENDAY_",
+    "ORNGDAY_",
+    "VEGEDA1_",
+    "_FRUTSUM",
+    "_VEGESUM",
+    "METVL11_",
+    "METVL21_",
+    "MAXVO2_",
+    "FC60_",
+    "PADUR1_",
+    "PADUR2_",
+    "PAFREQ1_",
+    "PAFREQ2_",
+    "_MINAC11",
+    "_MINAC21",
+    "PAMIN11_",
+    "PAMIN21_",
+    "PA1MIN_",
+    "PAVIG11_",
+    "PAVIG21_",
+    "_AGE80*SEX",
+    "_AGE80*_BMI5",
+    "_AGE80*_SMOKER3",
+    "_AGE80*_RFHYPE5",
+    "_AGE80*_RFCHOL",
+    "_AGE80*DIABETE3",
+    "_AGE80*GENHLTH",
+    "_AGE80*_TOTINDA",
+    "_AGE80*CVDSTRK3",
+    "SEX*_SMOKER3",
+    "SEX*_RFHYPE5",
+    "SEX*_RFCHOL",
+    "SEX*DIABETE3",
+    "_RFHYPE5*_RFCHOL",
+    "_RFHYPE5*DIABETE3",
+    "_RFCHOL*DIABETE3",
+    "_BMI5*DIABETE3",
+    "_BMI5*_RFHYPE5",
+    "GENHLTH*DIFFWALK",
+    "GENHLTH*PHYSHLTH",
+    "IYEAR==2016",
+    "DISPCODE==1200",
+    "CTELENUM==missing",
+    "STATERES==missing",
+    "CELLFON3==1",
+    "CADULT==1",
+    "CADULT==2",
+    "PVTRESD2==1",
+    "CCLGHOUS==other",
+    "CSTATE==1",
+    "CSTATE==2",
+    "LANDLINE==1",
+    "LANDLINE==2",
+    "LANDLINE==other",
+    "GENHLTH==1",
+    "GENHLTH==3",
+    "GENHLTH==4",
+    "GENHLTH==5",
+    "GENHLTH==other",
+    "HLTHPLN1==2",
+    "HLTHPLN1==other",
+    "PERSDOC2==2",
+    "PERSDOC2==3",
+    "PERSDOC2==other",
+    "MEDCOST==1",
+    "MEDCOST==other",
+    "CHECKUP1==2",
+    "CHECKUP1==3",
+    "CHECKUP1==4",
+    "CHECKUP1==7",
+    "CHECKUP1==8",
+    "CHECKUP1==other",
+    "BPHIGH4==1",
+    "BPHIGH4==2",
+    "BPHIGH4==4",
+    "BPHIGH4==other",
+    "BPMEDS==1",
+    "BPMEDS==2",
+    "BLOODCHO==2",
+    "BLOODCHO==7",
+    "BLOODCHO==other",
+    "CHOLCHK==2",
+    "CHOLCHK==3",
+    "CHOLCHK==4",
+    "CHOLCHK==7",
+    "CHOLCHK==other",
+    "TOLDHI2==1",
+    "TOLDHI2==7",
+    "TOLDHI2==other",
+    "CVDSTRK3==1",
+    "CVDSTRK3==other",
+    "ASTHMA3==1",
+    "ASTHMA3==other",
+    "ASTHNOW==1",
+    "ASTHNOW==2",
+    "CHCSCNCR==1",
+    "CHCSCNCR==other",
+    "CHCOCNCR==1",
+    "CHCOCNCR==other",
+    "CHCCOPD1==1",
+    "CHCCOPD1==other",
+    "HAVARTH3==1",
+    "HAVARTH3==7",
+    "ADDEPEV2==1",
+    "ADDEPEV2==other",
+    "CHCKIDNY==1",
+    "CHCKIDNY==other",
+    "DIABETE3==1",
+    "DIABETE3==2",
+    "DIABETE3==4",
+    "DIABETE3==other",
+    "SEX==1",
+    "MARITAL==2",
+    "MARITAL==3",
+    "MARITAL==4",
+    "MARITAL==5",
+    "MARITAL==6",
+    "MARITAL==9",
+    "EDUCA==2",
+    "EDUCA==3",
+    "EDUCA==4",
+    "EDUCA==5",
+    "EDUCA==other",
+    "RENTHOM1==2",
+    "RENTHOM1==3",
+    "RENTHOM1==9",
+    "RENTHOM1==other",
+    "NUMHHOL2==1",
+    "NUMHHOL2==other",
+    "NUMPHON2==1",
+    "NUMPHON2==2",
+    "CPDEMO1==2",
+    "CPDEMO1==other",
+    "VETERAN3==1",
+    "VETERAN3==other",
+    "EMPLOY1==2",
+    "EMPLOY1==3",
+    "EMPLOY1==4",
+    "EMPLOY1==5",
+    "EMPLOY1==6",
+    "EMPLOY1==7",
+    "EMPLOY1==8",
+    "EMPLOY1==9",
+    "INCOME2==1",
+    "INCOME2==2",
+    "INCOME2==3",
+    "INCOME2==4",
+    "INCOME2==5",
+    "INCOME2==6",
+    "INCOME2==7",
+    "INCOME2==77",
+    "INCOME2==99",
+    "INCOME2==missing",
+    "INTERNET==2",
+    "INTERNET==missing",
+    "INTERNET==other",
+    "PREGNANT==1",
+    "PREGNANT==2",
+    "PREGNANT==other",
+    "QLACTLM2==1",
+    "QLACTLM2==missing",
+    "QLACTLM2==other",
+    "USEEQUIP==1",
+    "USEEQUIP==missing",
+    "USEEQUIP==other",
+    "BLIND==1",
+    "BLIND==missing",
+    "BLIND==other",
+    "DECIDE==1",
+    "DECIDE==missing",
+    "DECIDE==other",
+    "DIFFWALK==1",
+    "DIFFWALK==missing",
+    "DIFFWALK==other",
+    "DIFFDRES==1",
+    "DIFFDRES==missing",
+    "DIFFDRES==other",
+    "DIFFALON==1",
+    "DIFFALON==missing",
+    "DIFFALON==other",
+    "SMOKE100==1",
+    "SMOKE100==missing",
+    "SMOKE100==other",
+    "SMOKDAY2==1",
+    "SMOKDAY2==2",
+    "SMOKDAY2==3",
+    "SMOKDAY2==other",
+    "STOPSMK2==1",
+    "STOPSMK2==2",
+    "STOPSMK2==other",
+    "LASTSMK2==1",
+    "LASTSMK2==2",
+    "LASTSMK2==3",
+    "LASTSMK2==4",
+    "LASTSMK2==5",
+    "LASTSMK2==6",
+    "LASTSMK2==7",
+    "LASTSMK2==other",
+    "USENOW3==1",
+    "USENOW3==2",
+    "USENOW3==missing",
+    "USENOW3==other",
+    "EXERANY2==2",
+    "EXERANY2==missing",
+    "EXERANY2==other",
+    "LMTJOIN3==1",
+    "LMTJOIN3==2",
+    "LMTJOIN3==other",
+    "ARTHDIS2==1",
+    "ARTHDIS2==2",
+    "ARTHDIS2==7",
+    "ARTHDIS2==other",
+    "ARTHSOCL==1",
+    "ARTHSOCL==2",
+    "ARTHSOCL==3",
+    "ARTHSOCL==other",
+    "SEATBELT==2",
+    "SEATBELT==3",
+    "SEATBELT==4",
+    "SEATBELT==5",
+    "SEATBELT==missing",
+    "SEATBELT==other",
+    "FLUSHOT6==1",
+    "FLUSHOT6==missing",
+    "FLUSHOT6==other",
+    "PNEUVAC3==1",
+    "PNEUVAC3==7",
+    "PNEUVAC3==missing",
+    "PNEUVAC3==other",
+    "HIVTST6==1",
+    "HIVTST6==7",
+    "HIVTST6==9",
+    "HIVTST6==missing",
+    "PDIABTST==1",
+    "PDIABTST==2",
+    "PDIABTST==7",
+    "PREDIAB1==1",
+    "PREDIAB1==3",
+    "PREDIAB1==other",
+    "INSULIN==1",
+    "INSULIN==2",
+    "EYEEXAM==1",
+    "EYEEXAM==2",
+    "EYEEXAM==3",
+    "EYEEXAM==4",
+    "EYEEXAM==other",
+    "DIABEYE==1",
+    "DIABEYE==2",
+    "DIABEYE==other",
+    "DIABEDU==1",
+    "DIABEDU==2",
+    "CAREGIV1==1",
+    "CAREGIV1==2",
+    "CAREGIV1==other",
+    "CRGVLNG1==1",
+    "CRGVLNG1==2",
+    "CRGVLNG1==3",
+    "CRGVLNG1==4",
+    "CRGVLNG1==5",
+    "CRGVLNG1==other",
+    "CRGVHRS1==1",
+    "CRGVHRS1==2",
+    "CRGVHRS1==3",
+    "CRGVHRS1==4",
+    "CRGVHRS1==other",
+    "CRGVPERS==1",
+    "CRGVPERS==2",
+    "CRGVPERS==other",
+    "CRGVHOUS==1",
+    "CRGVHOUS==2",
+    "CRGVHOUS==other",
+    "CRGVMST2==6",
+    "CRGVMST2==other",
+    "CRGVEXPT==1",
+    "CRGVEXPT==2",
+    "CRGVEXPT==7",
+    "CRGVEXPT==other",
+    "VIDFCLT2==1",
+    "VIDFCLT2==other",
+    "VIREDIF3==other",
+    "VINOCRE2==other",
+    "VIEYEXM2==other",
+    "VIINSUR2==other",
+    "VICTRCT4==other",
+    "VIGLUMA2==2",
+    "VIMACDG2==2",
+    "VIMACDG2==other",
+    "CIMEMLOS==1",
+    "CIMEMLOS==2",
+    "CIMEMLOS==other",
+    "CDHOUSE==3",
+    "CDHOUSE==5",
+    "CDHOUSE==other",
+    "CDASSIST==3",
+    "CDASSIST==5",
+    "CDASSIST==other",
+    "CDHELP==other",
+    "CDSOCIAL==3",
+    "CDSOCIAL==5",
+    "CDSOCIAL==other",
+    "CDDISCUS==1",
+    "CDDISCUS==2",
+    "WTCHSALT==1",
+    "WTCHSALT==2",
+    "WTCHSALT==other",
+    "DRADVISE==1",
+    "DRADVISE==2",
+    "DRADVISE==other",
+    "ASATTACK==other",
+    "ASERVIST==other",
+    "ASYMPTOM==other",
+    "ASNOSLEP==other",
+    "ASTHMED3==other",
+    "HAREHAB1==other",
+    "STREHAB1==other",
+    "CVDASPRN==1",
+    "CVDASPRN==2",
+    "ASPUNSAF==3",
+    "ASPUNSAF==other",
+    "RLIVPAIN==2",
+    "RLIVPAIN==other",
+    "RDUCHART==1",
+    "RDUCSTRK==1",
+    "RDUCSTRK==other",
+    "ARTTODAY==1",
+    "ARTTODAY==2",
+    "ARTTODAY==3",
+    "ARTTODAY==other",
+    "ARTHWGT==1",
+    "ARTHWGT==2",
+    "ARTHWGT==other",
+    "ARTHEXER==1",
+    "ARTHEXER==2",
+    "ARTHEXER==other",
+    "ARTHEDU==1",
+    "ARTHEDU==2",
+    "TETANUS==1",
+    "TETANUS==2",
+    "TETANUS==3",
+    "TETANUS==4",
+    "TETANUS==7",
+    "HPVADVC2==2",
+    "HPVADVC2==other",
+    "HPVADSHT==other",
+    "SHINGLE2==1",
+    "SHINGLE2==2",
+    "SHINGLE2==other",
+    "HADMAM==1",
+    "HADMAM==2",
+    "HOWLONG==1",
+    "HOWLONG==2",
+    "HOWLONG==other",
+    "HADPAP2==1",
+    "HADPAP2==other",
+    "LASTPAP2==1",
+    "LASTPAP2==2",
+    "LASTPAP2==5",
+    "LASTPAP2==other",
+    "HPVTEST==1",
+    "HPVTEST==2",
+    "HPVTEST==7",
+    "HPLSTTST==1",
+    "HPLSTTST==other",
+    "HADHYST2==1",
+    "HADHYST2==2",
+    "PROFEXAM==1",
+    "PROFEXAM==other",
+    "LENGEXAM==1",
+    "LENGEXAM==other",
+    "BLDSTOOL==1",
+    "BLDSTOOL==2",
+    "BLDSTOOL==other",
+    "LSTBLDS3==1",
+    "LSTBLDS3==2",
+    "LSTBLDS3==4",
+    "LSTBLDS3==5",
+    "LSTBLDS3==other",
+    "HADSIGM3==1",
+    "HADSIGM3==2",
+    "HADSIGM3==other",
+    "HADSGCO1==2",
+    "HADSGCO1==other",
+    "LASTSIG3==1",
+    "LASTSIG3==2",
+    "LASTSIG3==3",
+    "LASTSIG3==4",
+    "LASTSIG3==5",
+    "LASTSIG3==6",
+    "LASTSIG3==other",
+    "PCPSAAD2==1",
+    "PCPSAAD2==2",
+    "PCPSAAD2==other",
+    "PCPSADI1==2",
+    "PCPSADI1==other",
+    "PCPSARE1==1",
+    "PCPSARE1==2",
+    "PCPSARE1==other",
+    "PSATEST1==1",
+    "PSATEST1==2",
+    "PSATIME==1",
+    "PSATIME==other",
+    "PCPSARS1==1",
+    "PCPSARS1==other",
+    "PCPSADE1==other",
+    "PCDMDECN==other",
+    "SCNTMNY1==1",
+    "SCNTMNY1==2",
+    "SCNTMNY1==3",
+    "SCNTMNY1==4",
+    "SCNTMNY1==5",
+    "SCNTMNY1==other",
+    "SCNTMEL1==1",
+    "SCNTMEL1==2",
+    "SCNTMEL1==3",
+    "SCNTMEL1==4",
+    "SCNTMEL1==5",
+    "SCNTMEL1==other",
+    "SCNTPAID==1",
+    "SCNTPAID==2",
+    "SCNTPAID==3",
+    "SCNTPAID==other",
+    "SCNTLPAD==1",
+    "SCNTLPAD==2",
+    "SCNTLPAD==other",
+    "SXORIENT==1",
+    "SXORIENT==2",
+    "SXORIENT==3",
+    "SXORIENT==9",
+    "SXORIENT==other",
+    "TRNSGNDR==4",
+    "TRNSGNDR==other",
+    "RCSGENDR==1",
+    "RCSGENDR==2",
+    "RCSGENDR==9",
+    "RCSRLTN2==1",
+    "RCSRLTN2==2",
+    "RCSRLTN2==4",
+    "RCSRLTN2==9",
+    "RCSRLTN2==other",
+    "CASTHDX2==1",
+    "CASTHDX2==2",
+    "CASTHDX2==other",
+    "CASTHNO2==1",
+    "CASTHNO2==other",
+    "EMTSUPRT==1",
+    "EMTSUPRT==2",
+    "EMTSUPRT==other",
+    "LSATISFY==1",
+    "LSATISFY==2",
+    "LSATISFY==other",
+    "MISTMNT==1",
+    "MISTMNT==2",
+    "ADANXEV==1",
+    "ADANXEV==2",
+    "QSTVER==11",
+    "QSTVER==12",
+    "QSTVER==13",
+    "QSTVER==20",
+    "QSTVER==21",
+    "QSTVER==22",
+    "QSTLANG==2",
+    "MSCODE==1",
+    "MSCODE==2",
+    "MSCODE==3",
+    "MSCODE==5",
+    "_CHISPNC==1",
+    "_CHISPNC==2",
+    "_CHISPNC==missing",
+    "_CRACE1==1",
+    "_CRACE1==2",
+    "_CRACE1==7",
+    "_CRACE1==99",
+    "_CRACE1==other",
+    "_RFHLTH==other",
+    "_HCVU651==2",
+    "_HCVU651==9",
+    "_RFHYPE5==other",
+    "_DRDXAR1==missing",
+    "_PRACE1==2",
+    "_PRACE1==3",
+    "_PRACE1==4",
+    "_PRACE1==5",
+    "_PRACE1==6",
+    "_PRACE1==77",
+    "_PRACE1==99",
+    "_PRACE1==other",
+    "_MRACE1==2",
+    "_MRACE1==3",
+    "_MRACE1==4",
+    "_MRACE1==6",
+    "_MRACE1==7",
+    "_MRACE1==other",
+    "_HISPANC==1",
+    "_HISPANC==9",
+    "_RACE==2",
+    "_RACE==3",
+    "_RACE==4",
+    "_RACE==7",
+    "_RACE==9",
+    "_RACE==other",
+    "_AGE65YR==2",
+    "_AGE_G==1",
+    "_AGE_G==2",
+    "_AGE_G==3",
+    "_AGE_G==4",
+    "_AGE_G==5",
+    "_BMI5CAT==1",
+    "_BMI5CAT==2",
+    "_BMI5CAT==4",
+    "_BMI5CAT==missing",
+    "_CHLDCNT==2",
+    "_CHLDCNT==3",
+    "_CHLDCNT==4",
+    "_CHLDCNT==5",
+    "_CHLDCNT==6",
+    "_CHLDCNT==9",
+    "_EDUCAG==1",
+    "DRNKANY5==2",
+    "DRNKANY5==7",
+    "DRNKANY5==9",
+    "_RFBING5==2",
+    "_RFBING5==9",
+    "_RFDRHV5==2",
+    "_RFDRHV5==9",
+    "_MISFRTN==1",
+    "_MISFRTN==2",
+    "_MISVEGN==1",
+    "_MISVEGN==2",
+    "_MISVEGN==4",
+    "_MISVEGN==other",
+    "_FRTLT1==2",
+    "_VEGLT1==2",
+    "ACTIN11_==0",
+    "ACTIN11_==2",
+    "ACTIN11_==missing",
+    "ACTIN21_==0",
+    "ACTIN21_==1",
+    "ACTIN21_==2",
+    "PAMISS1_==1",
+    "_PACAT1==2",
+    "_PACAT1==3",
+    "_PACAT1==4",
+    "_PACAT1==9",
+    "_PAINDX1==9",
+    "_PASTRNG==1",
+    "_PASTRNG==9",
+    "_PAREC1==1",
+    "_PAREC1==2",
+    "_PAREC1==3",
+    "_PAREC1==9",
+    "_RFSEAT2==9",
+    "_FLSHOT6==1",
+    "_FLSHOT6==2",
+    "_PNEUMO2==1",
+    "_PNEUMO2==2",
+    "_AGE80*_SMOKER3==1",
+    "_AGE80*_SMOKER3==2",
+    "_AGE80*_SMOKER3==3",
+    "_AGE80*_RFHYPE5==2",
+    "_AGE80*_RFCHOL==2",
+    "_AGE80*_RFCHOL==missing",
+    "_AGE80*DIABETE3==1",
+    "_AGE80*DIABETE3==2",
+    "_AGE80*DIABETE3==4",
+    "_AGE80*DIABETE3==other",
+    "_AGE80*GENHLTH==1",
+    "_AGE80*GENHLTH==3",
+    "_AGE80*GENHLTH==4",
+    "_AGE80*GENHLTH==5",
+    "_AGE80*GENHLTH==other",
+    "_AGE80*_TOTINDA==2",
+    "_AGE80*CVDSTRK3==1",
+    "_AGE80*CVDSTRK3==other",
+    "_BMI5*DIABETE3==1",
+    "_BMI5*DIABETE3==2",
+    "_BMI5*DIABETE3==4",
+    "_BMI5*DIABETE3==other",
+    "_BMI5*_RFHYPE5==2",
+    "_BMI5*SEX==1",
+    "SEX==1*_SMOKER3==1",
+    "SEX==1*_SMOKER3==2",
+    "SEX==1*_SMOKER3==3",
+    "SEX==1*_RFHYPE5==2",
+    "SEX==1*_RFCHOL==2",
+    "SEX==1*_RFCHOL==missing",
+    "SEX==1*DIABETE3==1",
+    "SEX==1*DIABETE3==4",
+    "SEX==1*DIABETE3==other",
+    "_RFHYPE5==2*_RFCHOL==2",
+    "_RFHYPE5==2*_RFCHOL==9",
+    "_RFHYPE5==2*_RFCHOL==missing",
+    "_RFHYPE5==other*_RFCHOL==2",
+    "_RFHYPE5==other*_RFCHOL==missing",
+    "_RFHYPE5==2*DIABETE3==1",
+    "_RFHYPE5==2*DIABETE3==2",
+    "_RFHYPE5==2*DIABETE3==4",
+    "_RFHYPE5==2*DIABETE3==other",
+    "_RFHYPE5==other*DIABETE3==1",
+    "_RFCHOL==2*DIABETE3==1",
+    "_RFCHOL==2*DIABETE3==2",
+    "_RFCHOL==2*DIABETE3==4",
+    "_RFCHOL==2*DIABETE3==other",
+    "_RFCHOL==9*DIABETE3==1",
+    "_RFCHOL==missing*DIABETE3==1",
+    "_RFCHOL==missing*DIABETE3==2",
+    "_RFCHOL==missing*DIABETE3==4",
+    "_RFCHOL==missing*DIABETE3==other",
+    "GENHLTH==1*DIFFWALK==1",
+    "GENHLTH==1*DIFFWALK==missing",
+    "GENHLTH==1*DIFFWALK==other",
+    "GENHLTH==3*DIFFWALK==1",
+    "GENHLTH==3*DIFFWALK==missing",
+    "GENHLTH==3*DIFFWALK==other",
+    "GENHLTH==4*DIFFWALK==1",
+    "GENHLTH==4*DIFFWALK==missing",
+    "GENHLTH==4*DIFFWALK==other",
+    "GENHLTH==5*DIFFWALK==1",
+    "GENHLTH==5*DIFFWALK==missing",
+    "GENHLTH==5*DIFFWALK==other",
+    "GENHLTH==other*DIFFWALK==1"
+  ],
+  "kept_min_over_max_eigenvalue": 2.489161673842079e-09,
+  "kept_solve_ok": true
+}

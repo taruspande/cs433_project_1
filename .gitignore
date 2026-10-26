@@ -230,3 +230,10 @@ __pycache__/
 *.txt
 *.sh
 *.csv
+# keep the final submission files (csv + json with its parameters) despite the *.csv rule
+!submissions/
+!submissions/*.csv
+!results/runs.csv
+
+results/oof/
+*.npz

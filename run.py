@@ -1,15 +1,3 @@
-"""Train and compare all the models of implementations.py, optionally write a submission.
-
-Layout: preprocessing.py builds the features, this file trains / evaluates the models
-(k-fold cross-validation, metrics) and writes the submission csv.
-
-Examples:
-    python run.py                                 # all algorithms, plain features
-    python run.py --algorithms ridge_regression --lambda_ 0.0001 --one-hot --interactions
-    python run.py --algorithms ridge_regression --one-hot --recode --bin --dummy-interactions
-    python run.py --algorithms ridge_regression --submit ridge_regression --output out.csv
-"""
-
 import argparse
 import datetime
 import sys
@@ -56,15 +44,19 @@ def kfold_indices(n, k, seed):
 
 
 ### TRAINING ###
-def fit(name, y, tx, args):
-    """Fit one algorithm. Returns the weights. y is in {-1, 1}."""
-    d = tx.shape[1]
-    w0 = np.zeros(d)
+def fit(name, y, tx, args, w0=None, max_iters=None):
+    """Fit one algorithm. Returns the weights. y is in {-1, 1}.
+
+    The iterative methods start from `w0` (default zeros) and run `max_iters` iterations
+    (default args.max_iters): calling them repeatedly with the previous weights continues
+    the same run, which experiments.py uses to record convergence checkpoints."""
+    w0 = np.zeros(tx.shape[1]) if w0 is None else w0
+    iters = args.max_iters if max_iters is None else max_iters
     y01 = (y + 1) / 2  # logistic regression expects {0, 1}
     if name == "mean_squared_error_gd":
-        return mean_squared_error_gd(y, tx, w0, args.max_iters, args.gamma)[0]
+        return mean_squared_error_gd(y, tx, w0, iters, args.gamma)[0]
     if name == "mean_squared_error_sgd":
-        return mean_squared_error_sgd(y, tx, w0, args.max_iters, args.gamma)[0]
+        return mean_squared_error_sgd(y, tx, w0, iters, args.gamma)[0]
     if name == "least_squares":
         try:
             return least_squares(y, tx)[0]
@@ -74,11 +66,9 @@ def fit(name, y, tx, args):
     if name == "ridge_regression":
         return ridge_regression(y, tx, args.lambda_)[0]
     if name == "logistic_regression":
-        return logistic_regression(y01, tx, w0, args.max_iters, args.gamma)[0]
+        return logistic_regression(y01, tx, w0, iters, args.gamma)[0]
     if name == "reg_logistic_regression":
-        return reg_logistic_regression(
-            y01, tx, args.lambda_, w0, args.max_iters, args.gamma
-        )[0]
+        return reg_logistic_regression(y01, tx, args.lambda_, w0, iters, args.gamma)[0]
     raise ValueError(name)
 
 

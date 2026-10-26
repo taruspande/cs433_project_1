@@ -1,0 +1,19 @@
+{
+  "job": {
+    "stage": "s5_final",
+    "stage_no": 5,
+    "label": "final ridge",
+    "algo": "ridge_regression",
+    "featureset": "final",
+    "gamma": null,
+    "lam": 0.0001,
+    "iters": null,
+    "seed": 0,
+    "refit": true,
+    "submit": "ridge_final"
+  },
+  "threshold": -0.5464941017394491,
+  "predicted_positive_rate": 0.1321094542828148,
+  "cv_mean_f1": 0.43695412287215324,
+  "cv_mean_auc": 0.8600582936197971
+}
