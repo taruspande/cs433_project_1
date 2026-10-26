@@ -1,9 +1,13 @@
 """Train and compare all the models of implementations.py, optionally write a submission.
 
+Layout: preprocessing.py builds the features, this file trains / evaluates the models
+(k-fold cross-validation, metrics) and writes the submission csv.
+
 Examples:
-    python run.py                         # evaluate every algorithm on a validation split
-    python run.py --submit ridge_regression
-    python run.py --submit best --output my_submission.csv
+    python run.py                                 # all algorithms, plain features
+    python run.py --algorithms ridge_regression --lambda_ 0.0001 --one-hot --interactions
+    python run.py --algorithms ridge_regression --one-hot --recode --bin --dummy-interactions
+    python run.py --algorithms ridge_regression --submit ridge_regression --output out.csv
 """
 
 import argparse
@@ -23,6 +27,12 @@ from implementations import (
     reg_logistic_regression,
     sigmoid,
 )
+from preprocessing import (
+    add_feature_args,
+    preprocess,
+    read_feature_names,
+    validate_feature_args,
+)
 
 ALGORITHMS = [
     "mean_squared_error_gd",
@@ -35,24 +45,7 @@ ALGORITHMS = [
 LOGISTIC = {"logistic_regression", "reg_logistic_regression"}
 
 
-### PREPROCESSING ###
-def preprocess(x_train, x_test):
-    """Impute NaNs with the train median, standardize, and add a bias column."""
-    median = np.nanmedian(x_train, axis=0)
-    median = np.where(np.isnan(median), 0.0, median)  # columns that are all NaN
-    x_train = np.where(np.isnan(x_train), median, x_train)
-    x_test = np.where(np.isnan(x_test), median, x_test)
-
-    mean = x_train.mean(axis=0)
-    std = x_train.std(axis=0)
-    std[std == 0] = 1.0
-    x_train = (x_train - mean) / std
-    x_test = (x_test - mean) / std
-
-    add_bias = lambda x: np.c_[np.ones(x.shape[0]), x]
-    return add_bias(x_train), add_bias(x_test)
-
-
+### CROSS-VALIDATION ###
 def kfold_indices(n, k, seed):
     """Shuffle once and yield (train_idx, val_idx) for each of the k folds.
     k < 2 falls back to a single hold-out split of size --val-frac (handled by caller)."""
@@ -153,6 +146,8 @@ def metrics(y, y_pred):
     }
 
 
+
+### EVALUATION ###
 METRIC_KEYS = [
     "accuracy", "balanced_accuracy", "precision", "recall", "specificity", "f1", "mcc",
 ]
@@ -236,20 +231,53 @@ def write_submission(name, threshold, tx, y, tx_test, test_ids, args):
     )
 
 
-def print_run_config(args, x_train, x_test):
+### RUN REPORT ###
+def print_run_config(args, stats, info):
     """Print everything needed to reproduce / catalogue this run."""
     print("=" * 80)
     print(f"Run started: {datetime.datetime.now().isoformat(timespec='seconds')}")
     print(f"Command: python {' '.join(sys.argv)}")
     print("Parameters:")
     for k, v in sorted(vars(args).items()):
-        print(f"  {k:<12} = {v}")
-    print(f"  {'init_w':<12} = zeros")
-    print(f"  {'sgd_batch':<12} = 1 (as implemented in implementations.py)")
+        print(f"  {k:<20} = {v}")
+    print(f"  {'init_w':<20} = zeros")
+    print(f"  {'sgd_batch':<20} = 1 (as implemented in implementations.py)")
     print("Data:")
-    print(f"  x_train {x_train.shape}, x_test {x_test.shape}")
-    print(f"  NaN fraction: train {np.isnan(x_train).mean():.4f}, test {np.isnan(x_test).mean():.4f}")
-    print("Preprocessing: NaN -> train column median, standardize (train mean/std), add bias column")
+    print(f"  x_train {stats['train_shape']}, x_test {stats['test_shape']}")
+    print(f"  NaN fraction (raw): train {stats['nan_train']:.4f}, test {stats['nan_test']:.4f}")
+    print("Preprocessing:")
+    if args.recode:
+        print(f"  recode: {len(info['recoded'])} columns recoded: {', '.join(info['recoded'])}")
+    if args.bin:
+        print(f"  bin: {len(info['binned'])} columns into <= {args.bins} quantile bins: {', '.join(info['binned'])}")
+    print("  NaN -> train column median, standardize (train mean/std), add bias column")
+    if args.interactions:
+        print(
+            f"  interactions: {len(info['added'])} product features added (in memory only): "
+            f"{', '.join(info['added'])}"
+        )
+        if info["skipped"]:
+            print(f"    skipped (column not found): {info['skipped']}")
+    if args.one_hot:
+        print(
+            f"  one-hot: {info['n_categorical']} categorical columns (<= {args.max_levels} integer "
+            f"levels) replaced by {info['n_dummies']} dummies; NaN is its own level, levels under "
+            f"{args.min_level_frac:.2%} merged into 'other', most frequent level dropped"
+        )
+    if args.dummy_interactions:
+        print(f"  dummy interactions: {len(info['dummy_interactions'])} product features added")
+        if info["dummy_interactions_skipped"]:
+            print(f"    skipped (variable not found): {info['dummy_interactions_skipped']}")
+    if args.drop_json:
+        print(f"  drop-json: {info['dropped']} columns dropped using {args.drop_json}")
+        if info["drop_unmatched"]:
+            print(
+                f"    WARNING: {len(info['drop_unmatched'])} listed columns are not in this feature "
+                "set, was the json made with the same flags?"
+            )
+    if args.standardize_dummies:
+        print("  standardize-dummies: all columns (except bias) centered and scaled with train mean/std")
+    print(f"Final feature count (incl. bias): {len(info['columns'])}")
     if args.folds >= 2:
         print(f"Validation: {args.folds}-fold cross-validation, shuffled with seed {args.seed}")
     else:
@@ -257,7 +285,8 @@ def print_run_config(args, x_train, x_test):
     print("=" * 80 + "\n")
 
 
-def main():
+### COMMAND LINE ###
+def build_parser():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     p.add_argument("--data-dir", default="dataset")
     p.add_argument("--sub-sample", action="store_true", help="use every 50th training row (fast)")
@@ -281,12 +310,26 @@ def main():
         help="only evaluate these algorithms (default: all)",
     )
     p.add_argument("--output", default="submission.csv")
+    add_feature_args(p)
+    return p
+
+
+def main():
+    p = build_parser()
     args = p.parse_args()
+    validate_feature_args(p, args)
 
     x_train, x_test, y_train, _, test_ids = load_csv_data(args.data_dir, args.sub_sample)
-    tx, tx_test = preprocess(x_train, x_test)
+    names = read_feature_names(args.data_dir)
+    stats = {
+        "train_shape": x_train.shape,
+        "test_shape": x_test.shape,
+        "nan_train": np.isnan(x_train).mean(),
+        "nan_test": np.isnan(x_test).mean(),
+    }
+    tx, tx_test, info = preprocess(x_train, x_test, names, args)
 
-    print_run_config(args, x_train, x_test)
+    print_run_config(args, stats, info)
     best, thresholds = evaluate_all(tx, y_train, args)
     if args.submit:
         name = best if args.submit == "best" else args.submit

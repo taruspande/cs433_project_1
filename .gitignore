@@ -226,3 +226,7 @@ dataset/
 .idea/
 .venv/
 __pycache__/
+
+*.txt
+*.sh
+*.csv
