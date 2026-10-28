@@ -1,27 +1,3 @@
-"""Diagnose linear dependencies among the features built by run.py.
-
-Why: X^T X turns out to be a singular matrix.
-
-Checks (read-only; the only file written is the optional --save-json report):
-  1. constant columns            variance ~ 0 (all-zero columns after standardization)
-  2. identical columns           found by projecting every column on one random vector
-  3. remaining rank deficiency   eigenvalues of X^T X; the eigenvectors of the (numerically)
-                                 zero eigenvalues show which columns take part in a dependency
-  4. low-support columns         (only with --save-json) too few non-zero rows: all-zero in some
-                                 cross-validation folds, which makes X^T X singular there
-  5. redundant columns           (only with --save-json) greedy elimination: scan the columns in
-                                 order and mark every column that is a linear combination of the
-                                 columns kept before it. Dropping them makes X full column rank.
-
---save-json PATH writes every category with its column names, plus "columns_to_drop", the
-list to remove so that X^T X is invertible.
-
-Usage (same feature flags as run.py, the json is only valid for the flags it was made with):
-    python diagnostics.py --one-hot --interactions --save-json column_report.json
-    python diagnostics.py --one-hot --interactions --drop-json column_report.json
-        (second command: the dependencies should be gone, i.e. null-space dimension 0)
-"""
-
 import argparse
 import json
 

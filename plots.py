@@ -289,15 +289,23 @@ def fig_lambda(runs, a):
         if len(rs) < 2:
             continue
         drawn = True
+        lams = [r["meta"]["lambda"] for r in rs]
         for ax, key in zip(axes, ["f1", "auc"]):
-            _band(ax, [r["meta"]["lambda"] for r in rs], rs, key, color=col, label=FEATURE_LABEL[fs])
+            # one translucent line per fold, then the opaque mean on top
+            fold_ids = sorted({f["fold"] for r in rs for f in r["folds"]}, key=int)
+            for fid in fold_ids:
+                ys = [next(f[key] for f in r["folds"] if f["fold"] == fid) for r in rs]
+                ax.plot(lams, ys, color=col, alpha=0.5, lw=0.8)
+            ax.plot(lams, [val(r, key) for r in rs], color=col, lw=1.8, marker="o", ms=3,
+                    label=f"{'plain' if fs == 'plain' else 'final'} features, mean")
     if not drawn:
         plt.close(fig)
         return False
     for ax, title in zip(axes, ["F1", "AUC"]):
         ax.set_xscale("log")
         ax.set_xlabel("$\\lambda$")
-        ax.set_title(f"Ridge: {title} vs $\\lambda$")
+        ax.set_title(f"Ridge: {title} vs $\\lambda$ (thin: single folds)")
+    axes[0].plot([], [], color=C["grey"], alpha=0.4, lw=0.8, label="single folds")  # legend entry only
     axes[0].legend(loc="lower left")
     save(fig, a.out, "ridge_lambda", a.format, a.dpi)
 

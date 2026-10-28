@@ -235,5 +235,8 @@ __pycache__/
 !submissions/*.csv
 !results/runs.csv
 
-results/oof/
+figures/
+grading_tests/
+
+results/
 *.npz
