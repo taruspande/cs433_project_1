@@ -1,27 +1,10 @@
-"""Order:
-    1. --recode             special survey codes -> NaN / 0, frequency codes -> numbers
-    2. --bin                quantile-bin chosen numeric columns (needs --one-hot)
-    3. impute NaN with the train median and standardize with train mean/std
-    4. --interactions       products of standardized column pairs
-    5. --one-hot            categorical columns -> dummies (NaN is its own level)
-    6. --dummy-interactions products of numeric columns and dummies (needs --one-hot)
-    7. bias column
-    8. --drop-json          drop the columns listed by diagnostics.py --save-json
-    9. --standardize-dummies  center/scale all columns (mainly for gradient-descent methods)
-"""
-
 import json
 import os
 
 import numpy as np
 
-### CONFIGURATION ###
-# --recode: BRFSS special codes, checked against the value counts of the training data.
-# "nan" codes mean don't know / refused, "zero" codes mean "none" (a real 0).
-# Only codes that are special for that column are listed (e.g. 7 and 9 are real day counts
-# in PHYSHLTH, and 77 is a real age in _AGE80, so no blanket 7/9/77/99 rule).
 RECODE_RULES = {
-    "PHYSHLTH": {"zero": [88], "nan": [77, 99]},  # days of poor physical health
+    "PHYSHLTH": {"zero": [88], "nan": [77, 99]},
     "MENTHLTH": {"zero": [88], "nan": [77, 99]},
     "POORHLTH": {"zero": [88], "nan": [77, 99]},
     "CHILDREN": {"zero": [88], "nan": [99]},
@@ -30,20 +13,18 @@ RECODE_RULES = {
     "MAXDRNKS": {"nan": [77, 99]},
     "_DRNKWEK": {"nan": [99900]},
 }
-# 1xx = times per day, 2xx = per week, 3xx = per month, 555 = never, 777/999 = don't know/refused
+
 FREQ_PER_DAY_COLUMNS = ["FRUITJU1", "FRUIT1", "FVBEANS", "FVGREEN", "FVORANG", "VEGETAB1"]
-# 1xx = times per week, 2xx = per month, 888 = never, 777/999 = don't know/refused
+
 FREQ_PER_WEEK_COLUMNS = ["ALCDAY5", "STRENGTH"]
 
-# --bin: numeric columns that get quantile-bin dummies (in addition to the numeric column)
+
 BIN_COLUMNS = [
     "_AGE80", "_BMI5", "PHYSHLTH", "MENTHLTH", "POORHLTH", "ALCDAY5", "AVEDRNK2", "DRNK3GE5",
     "MAXDRNKS", "_DRNKWEK", "HEIGHT3", "WEIGHT2", "CHILDREN", "STRENGTH",
     "FRUITJU1", "FRUIT1", "FVBEANS", "FVGREEN", "FVORANG", "VEGETAB1",
 ]
 
-# --dummy-interactions: pairs of variables; a categorical variable stands for all its dummies,
-# a numeric variable for its standardized column. Every column pair of (a, b) gets a product.
 DUMMY_INTERACTION_PAIRS = [
     ("_AGE80", "SEX"),
     ("_AGE80", "_SMOKER3"),
@@ -123,17 +104,6 @@ def add_interactions(x_train, x_test, names, pairs=INTERACTION_PAIRS):
 
 
 def fit_one_hot(x, names, max_levels, min_frac):
-    """Decide which columns are categorical and which levels each one gets (train data only).
-
-    A column is categorical if all its non-NaN values are integers and it has at most
-    `max_levels` distinct values. Levels covering less than `min_frac` of the rows are merged
-    into one "other" category, and NaN becomes its own "missing" category. The most frequent
-    category is the dropped baseline (all its dummies 0), so the dummies of one variable are
-    never collinear with the bias column.
-
-    Returns a list of encoders: dicts with the column index, the kept level values,
-    has_missing / has_other flags, the index of the dropped category and dummy names.
-    """
     n = x.shape[0]
     encoders = []
     for j in range(x.shape[1]):
@@ -174,7 +144,6 @@ def fit_one_hot(x, names, max_levels, min_frac):
 
 
 def apply_one_hot(x, encoders, out):
-    """Write the dummy columns of every encoder into `out` (shape n x total_dummies)."""
     pos = 0
     for enc in encoders:
         col = x[:, enc["col"]]
@@ -192,7 +161,6 @@ def apply_one_hot(x, encoders, out):
 
 ### RECODING (--recode) ###
 def recode(x, names):
-    """Replace special codes in place (x is modified). Returns the names of the changed columns."""
     col = {n: i for i, n in enumerate(names)}
     changed = []
 
@@ -250,7 +218,6 @@ def recode(x, names):
 
 ### BINNING (--bin) ###
 def fit_bins(x, names, columns, n_bins):
-    """Quantile bin edges per column, from the training data. Returns {name: edges}."""
     col = {n: i for i, n in enumerate(names)}
     edges = {}
     for name in columns:
@@ -268,7 +235,6 @@ def fit_bins(x, names, columns, n_bins):
 
 
 def apply_bins(x, names, edges):
-    """Bin ids (as floats, NaN stays NaN) for the columns in `edges`, shape n x len(edges)."""
     col = {n: i for i, n in enumerate(names)}
     out = np.empty((x.shape[0], len(edges)))
     for k, (name, e) in enumerate(edges.items()):
@@ -283,12 +249,6 @@ def _flag(cfg, key, default=False):
 
 
 def preprocess(x_train, x_test, names, cfg):
-    """Build the model matrices. Returns (tx_train, tx_test, info).
-
-    `cfg` is any object with the attributes of add_feature_args() (e.g. argparse Namespace).
-    Missing attributes count as "off". x_train / x_test may be modified in place by --recode.
-    info["columns"] holds the name of every output column, info has the details of each step.
-    """
     names = list(names)
     one_hot = _flag(cfg, "one_hot")
     max_levels = _flag(cfg, "max_levels", 10)
@@ -403,7 +363,6 @@ def preprocess(x_train, x_test, names, cfg):
 
 ### COMMAND LINE FLAGS ###
 def add_feature_args(p):
-    """Add the feature-pipeline flags to an argparse parser (shared by run.py, diagnostics.py)."""
     p.add_argument("--recode", action="store_true", help="recode special survey codes (see RECODE_RULES)")
     p.add_argument("--bin", action="store_true", help="quantile-bin numeric columns (needs --one-hot)")
     p.add_argument("--bins", type=int, default=8, help="number of quantile bins for --bin")
@@ -442,6 +401,5 @@ def add_feature_args(p):
 
 
 def validate_feature_args(p, args):
-    """Reject flag combinations that need --one-hot."""
     if (args.bin or args.dummy_interactions) and not args.one_hot:
         p.error("--bin and --dummy-interactions need --one-hot")

@@ -20,6 +20,11 @@ ALGO_LABEL = {
     "ridge_regression": "Ridge", "logistic_regression": "Logistic", "reg_logistic_regression": "Reg. logistic",
 }
 ALGO_ORDER = list(ALGO_LABEL)
+# short x-axis labels of the methods_base figure, in the order of ALGO_ORDER
+METHOD_ABBR = {
+    "mean_squared_error_gd": "GD", "mean_squared_error_sgd": "SGD", "least_squares": "LS",
+    "ridge_regression": "RR", "logistic_regression": "LGD", "reg_logistic_regression": "RLGD",
+}
 FEATURE_LABEL = {
     "plain": "plain", "inter": "interactions", "oh": "one-hot", "oh_recode": "one-hot + recode",
     "oh_inter": "one-hot + inter.", "oh_inter_recode": "one-hot + inter. + recode",
@@ -159,7 +164,7 @@ def fig_methods(runs, a):
         x = np.arange(len(items))
         ax.bar(x, [val(r, key) for _, r in items], yerr=[val(r, key, "std") for _, r in items],
                color=[C["red"] if r["mean"]["diverged"] else C["blue"] for _, r in items], capsize=2)
-        ax.set_xticks(x, [ALGO_LABEL[al] for al, _ in items])
+        ax.set_xticks(x, [METHOD_ABBR[al] for al, _ in items])
         ax.set_title(f"{title}, plain features, default parameters")
         if key == "auc":
             ax.axhline(0.5, color=C["grey"], lw=0.8, ls="--")
@@ -480,14 +485,24 @@ def pm(run, key, digits=4):
     return f"{val(run, key):.{digits}f} $\\pm$ {val(run, key, 'std'):.{digits}f}"
 
 
-def write_table(out, name, header, rows):
+def write_table(out, name, header, rows, caption=None, label=None, wide=False):
+    """Write <name>.tex and <name>.md. With a caption the .tex is a complete float (table, or table*
+    spanning both columns when wide=True); without one it is the bare tabular. Needs booktabs."""
     os.makedirs(out, exist_ok=True)
     with open(os.path.join(out, name + ".tex"), "w") as fh:
+        env = "table*" if wide else "table"
+        if caption:
+            fh.write(f"% requires \\usepackage{{booktabs}}\n\\begin{{{env}}}[t]\n\\centering\n\\small\n")
         fh.write("\\begin{tabular}{" + "l" + "r" * (len(header) - 1) + "}\n\\toprule\n")
         fh.write(" & ".join(header) + " \\\\\n\\midrule\n")
         for r in rows:
             fh.write(" & ".join(str(c).replace("_", "\\_") if i == 0 else str(c) for i, c in enumerate(r)) + " \\\\\n")
         fh.write("\\bottomrule\n\\end{tabular}\n")
+        if caption:
+            fh.write(f"\\caption{{{caption}}}\n")
+            if label:
+                fh.write(f"\\label{{{label}}}\n")
+            fh.write(f"\\end{{{env}}}\n")
     with open(os.path.join(out, name + ".md"), "w") as fh:
         fh.write("| " + " | ".join(header) + " |\n|" + "---|" * len(header) + "\n")
         for r in rows:
@@ -526,7 +541,16 @@ def table_methods(runs, a):
                          f"{val(r, 'recall'):.3f}"])
     if not rows:
         return False
-    write_table(a.out + "/tables", "methods", ["model", "F1", "AUC", "MCC", "precision", "recall"], rows)
+    caption = (
+        "Performance of the methods, 5-fold cross-validation (mean $\\pm$ std over folds; the decision threshold is "
+        "chosen to maximize F1). \\emph{plain}: standardized raw features; \\emph{final features}: one-hot "
+        "encoding, recoded special codes and dummy interactions. Parameters: SGD $\\gamma=0.01$, 300 iterations; "
+        "GD and logistic regression on plain features $\\gamma=0.02$, 1000 iterations (regularized: $\\lambda=0.01$); "
+        "ridge $\\lambda=10^{-4}$; logistic regression on final features $\\gamma=0.1$, 500 iterations "
+        "(regularized: $\\lambda=10^{-3}$)."
+    )
+    write_table(a.out + "/tables", "methods", ["model", "F1", "AUC", "MCC", "precision", "recall"], rows,
+                caption=caption, label="tab:methods", wide=True)
 
 
 FIGURES = {
