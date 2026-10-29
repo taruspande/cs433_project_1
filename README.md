@@ -5,6 +5,16 @@ Only Python and NumPy are used for the models, features and metrics (matplotlib 
 
 This file documents the files that are tracked in the repository and where everything is.
 
+## Reproducing the final submission
+
+With the competition files in `dataset/` (see below), run from the repository root (about 40 minutes: 5-fold cross-validation to choose the threshold, then a refit on all training data):
+
+```
+python run.py --algorithms reg_logistic_regression --lambda_ 0.001 --gamma 0.1 --max-iters 500 --one-hot --recode --dummy-interactions --standardize-dummies --submit reg_logistic_regression --output reg_logistic_final.csv
+```
+
+This is regularized logistic regression, the final model described in "Final model" below; the predictions are written to `reg_logistic_final.csv`.
+
 ## Repository layout
 
 ```
